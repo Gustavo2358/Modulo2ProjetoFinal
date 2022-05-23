@@ -8,10 +8,11 @@ import java.util.Scanner;
 public class EntryPage {
 
     public static void execute(Agency agency) {
-        System.out.println("### BEM-VINDO A LoCar");
+        System.out.println("########## BEM-VINDO A LoCar ##########");
         System.out.println("1 - Login");
         System.out.println("2 - Criar conta");
-        switch (getEntryPageOption(1,2)){
+        System.out.println("3 - Cadastrar Veiculo");
+        switch (getEntryPageOption(1,3)){
             case 1:
                 LogInPage.login(agency);
                 break;
@@ -21,6 +22,10 @@ public class EntryPage {
                     System.out.println("Conta Criada com sucesso");
                     agency.setCurrentUser(client);
                 }
+                break;
+            case 3:
+                CreateCar CreateCar = new CreateCar();
+                CreateCar.execute();
                 break;
         }
 

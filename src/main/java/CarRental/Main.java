@@ -16,8 +16,7 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        CreateCar CreaterCar = new CreateCar();
-        CreaterCar.execute();
+
         Agency agency = new Agency();
         agency.addUsers(new Admin("admin", "admin", UserType.ADMIN));
         while (true) {
