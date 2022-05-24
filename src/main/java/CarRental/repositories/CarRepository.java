@@ -11,4 +11,8 @@ public class CarRepository {
     public static boolean addCar(Car car) {
         return cars.add(car);
     }
+
+    public static HashSet<Car> getCars() {
+        return cars;
+    }
 }

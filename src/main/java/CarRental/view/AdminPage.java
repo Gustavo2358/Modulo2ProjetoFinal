@@ -12,7 +12,8 @@ public class AdminPage {
         System.out.printf("Nome de Usuário logado: %s%n", UserRepository.getCurrentUser().getUserName());
         System.out.println("1 - Listar usuários");
         System.out.println("2 - Cadastrar Veiculo");
-        System.out.println("3 - Fazer logout");
+        System.out.println("3 - Veículos disponíveis para locação");
+        System.out.println("4 - Fazer logout");
         int option = EntryPage.getEntryPageOption(1,3);
         switch (option){
             case 1:
@@ -22,6 +23,9 @@ public class AdminPage {
                 CarRepository.addCar(CarFactory.createCar());
                 break;
             case 3:
+                listCars();
+                break;
+            case 4:
                 logout();
                 break;
         }
@@ -35,6 +39,10 @@ public class AdminPage {
     private static void logout() {
         System.out.println("fazendo logout...");
         UserRepository.setCurrentUser(new Guest());
+    }
+
+    private static void listCars() {
+        CarRepository.getCars().forEach(System.out::println);
     }
 
 }
