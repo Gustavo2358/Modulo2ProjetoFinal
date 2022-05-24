@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class EntryPage {
 
     public static void execute(Agency agency) {
-        System.out.println("########## BEM-VINDO A LoCar ##########");
+        System.out.println("_########## BEM-VINDO A LoCar ##########_");
         System.out.println("1 - Login");
         System.out.println("2 - Criar conta");
         System.out.println("3 - Cadastrar Veiculo");
