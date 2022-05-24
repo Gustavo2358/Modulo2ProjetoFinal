@@ -1,29 +1,25 @@
 package CarRental;
 
 import CarRental.domain.Admin;
-import CarRental.domain.Agency;
+import CarRental.repositories.UserRepository;
 import CarRental.domain.UserType;
 import CarRental.view.AdminPage;
 import CarRental.view.EntryPage;
 import CarRental.view.ClientPage;
 
-import java.util.Scanner;
-
 
 public class Main {
-    Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        Agency agency = new Agency();
-        agency.addUsers(new Admin("admin", "admin", UserType.ADMIN));
+        UserRepository.addUser(new Admin("admin", "admin"));
         while (true) {
-            if(agency.getCurrentUser().getType() == UserType.GUEST) {
-                EntryPage.execute(agency);
-            }else if(agency.getCurrentUser().getType() == UserType.ADMIN){
-                AdminPage.execute(agency);
+            if(UserRepository.getCurrentUser().getType() == UserType.GUEST) {
+                EntryPage.execute();
+            }else if(UserRepository.getCurrentUser().getType() == UserType.ADMIN){
+                AdminPage.execute();
             }else{
-                ClientPage.execute(agency);
+                ClientPage.execute();
             }
 
 

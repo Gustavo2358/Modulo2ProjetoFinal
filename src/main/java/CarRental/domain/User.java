@@ -1,5 +1,7 @@
 package CarRental.domain;
 
+import java.util.Objects;
+
 public abstract class User {
     protected String userName;
     protected String password;
@@ -9,10 +11,9 @@ public abstract class User {
 
     }
 
-    public User(String userName, String password, UserType type) {
+    public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
-        this.type = type;
     }
 
     public String getUserName() {
@@ -32,8 +33,21 @@ public abstract class User {
     public String toString() {
         return "User{" +
                 "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+                //", password='" + password + '\'' +
                 ", type=" + type +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(userName, user.userName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName);
     }
 }

@@ -1,34 +1,34 @@
 package CarRental.view;
 
-import CarRental.domain.Agency;
+import CarRental.repositories.UserRepository;
 import CarRental.domain.User;
 
 import java.util.Scanner;
 
 public class LogInPage {
 
-    public static void login(Agency agency){
+    public static void login(){
         Scanner sc = new Scanner(System.in);
         System.out.println("### FAZER LOGIN ###");
-        String userName = getUserName(sc, agency);
+        String userName = getUserName(sc);
         if(userName.equals("")){
             return;
         }
-        boolean isPasswordValid = getPassword(sc, agency, userName);
+        boolean isPasswordValid = getPassword(sc, userName);
         if (isPasswordValid){
-            for(User user : agency.getUsers()) {
+            for(User user : UserRepository.getUsers()) {
                 if(user.getUserName().equals(userName))
-                agency.setCurrentUser(user);
+                UserRepository.setCurrentUser(user);
             }
         }
     }
 
-    private static String getUserName(Scanner sc, Agency agency){
+    private static String getUserName(Scanner sc){
         boolean nameFound;
         String userName;
         System.out.println("Nome do usuário:");
         userName = sc.nextLine();
-        nameFound = agency.getUserNames().contains(userName);
+        nameFound = UserRepository.getUserNames().contains(userName);
         if(nameFound == false) {
             System.out.println("Nome de usuário não encontrado.");
             return  "";
@@ -36,7 +36,7 @@ public class LogInPage {
         return userName;
     }
 
-    private static boolean getPassword(Scanner sc, Agency agency, String userName) {
+    private static boolean getPassword(Scanner sc, String userName) {
         String passWord;
         boolean ok;
         do{
@@ -45,7 +45,7 @@ public class LogInPage {
             if(passWord.equals("sair")){
                 return false;
             }
-            ok = agency.checkPassword(userName,passWord);
+            ok = UserRepository.checkPassword(userName,passWord);
             if(ok == false){
                 System.out.println("senha incorreta");
             }

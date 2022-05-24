@@ -1,7 +1,8 @@
 package CarRental.domain;
 
 public class Admin extends User{
-    public Admin(String userName, String password, UserType type) {
-        super(userName, password, type);
+    public Admin(String userName, String password) {
+        super(userName, password);
+        super.type = UserType.ADMIN;
     }
 }

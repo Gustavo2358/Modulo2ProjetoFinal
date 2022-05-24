@@ -12,10 +12,12 @@ public class CarFactory {
 
     public static Car createCar(){
         Scanner scanner = new Scanner(System.in);
+        //TODO validar entradas
         System.out.println("Cadastrando um carro ");
         System.out.println("Informe o modelo ");
         String modelo = scanner.next();
 
+        //TODO validar se a placa já existe no repositório (usar modelo do Client que verifica se o userName já existe)
         System.out.println("Informe a placa do veículo ");
         String placa = scanner.next();
         System.out.println("Informe o valor do aluguel ao dia do veículo ");

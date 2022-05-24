@@ -1,39 +1,40 @@
 package CarRental.view;
 
-import CarRental.domain.Agency;
+import CarRental.repositories.CarRepository;
+import CarRental.repositories.UserRepository;
 import CarRental.domain.Guest;
 import CarRental.factory.CarFactory;
 
 public class AdminPage {
 
-    public static void execute(Agency agency){
+    public static void execute(){
         System.out.println("### MENU DO ADMINISTRADOR ###");
-        System.out.printf("Nome de Usuário logado: %s%n", agency.getCurrentUser().getUserName());
+        System.out.printf("Nome de Usuário logado: %s%n", UserRepository.getCurrentUser().getUserName());
         System.out.println("1 - Listar usuários");
         System.out.println("2 - Cadastrar Veiculo");
         System.out.println("3 - Fazer logout");
         int option = EntryPage.getEntryPageOption(1,3);
         switch (option){
             case 1:
-                listUsers(agency);
+                listUsers();
                 break;
             case 2:
-                CarFactory.createCar();
+                CarRepository.addCar(CarFactory.createCar());
                 break;
             case 3:
-                logout(agency);
+                logout();
                 break;
         }
 
     }
 
-    private static void listUsers(Agency agency) {
-        agency.getUsers().forEach(System.out::println);
+    private static void listUsers() {
+        UserRepository.getUsers().forEach(System.out::println);
     }
 
-    private static void logout(Agency agency) {
+    private static void logout() {
         System.out.println("fazendo logout...");
-        agency.setCurrentUser(new Guest());
+        UserRepository.setCurrentUser(new Guest());
     }
 
 }
