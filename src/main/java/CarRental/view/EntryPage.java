@@ -2,6 +2,7 @@ package CarRental.view;
 
 import CarRental.domain.Agency;
 import CarRental.domain.Client;
+import CarRental.factory.ClientFactory;
 
 import java.util.Scanner;
 
@@ -11,21 +12,18 @@ public class EntryPage {
         System.out.println("_########## BEM-VINDO A LoCar ##########_");
         System.out.println("1 - Login");
         System.out.println("2 - Criar conta");
-        System.out.println("3 - Cadastrar Veiculo");
-        switch (getEntryPageOption(1,3)){
+        switch (getEntryPageOption(1,2)){
             case 1:
                 LogInPage.login(agency);
                 break;
             case 2:
-                Client client = CreateClientPage.execute(agency);
+                Client client = ClientFactory.createClient(agency);
                 if(agency.addUsers(client)){
                     System.out.println("Conta Criada com sucesso");
+                    System.out.println("Nome do usuário - " + client.getUserName());
+                    System.out.println();
                     agency.setCurrentUser(client);
                 }
-                break;
-            case 3:
-                CreateCar CreateCar = new CreateCar();
-                CreateCar.execute();
                 break;
         }
 

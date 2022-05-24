@@ -1,4 +1,4 @@
-package CarRental.view;
+package CarRental.factory;
 
 import CarRental.domain.Agency;
 import CarRental.domain.Client;
@@ -6,10 +6,10 @@ import CarRental.domain.UserType;
 
 import java.util.Scanner;
 
-public class CreateClientPage {
+public class ClientFactory {
 
 
-    public static Client execute(Agency agency) {
+    public static Client createClient(Agency agency) {
         Scanner sc = new Scanner(System.in);
         System.out.println("### Criar Conta ###");
         String userName = getUserName(sc, agency);
@@ -19,8 +19,6 @@ public class CreateClientPage {
             System.out.println("Confirme a senha:");
             String passwordConfirmation = sc.nextLine();
             if(password.equals(passwordConfirmation)){
-                System.out.println("Conta criada com sucesso");
-                System.out.println("Nome do usuário - " + userName);
                 return new Client(userName, password, UserType.CLIENT);
             }
             System.out.println("As senhas são diferentes");

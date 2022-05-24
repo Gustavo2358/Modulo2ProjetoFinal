@@ -3,54 +3,45 @@ package CarRental.domain;
 import java.util.ArrayList;
 
 public class Car {
-    private ArrayList<Car> carros;
-    private String modelo;
-    private String placa;
-    private double valorDia;
+    private String model;
+    private String licensePlate;
+    private double valuePerDay;
 
-    public Car(String modelo, String placa, double valorDia) {
-        this.modelo = modelo;
-        this.placa = placa;
-        this.valorDia = valorDia;
-        this.carros = new ArrayList<>();
+    public Car(String model, String licensePlate, double valuePerDay) {
+        this.model = model;
+        this.licensePlate = licensePlate;
+        this.valuePerDay = valuePerDay;
     }
 
 
-    public String getModelo() {
-        return modelo;
+    public String getModel() {
+        return model;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setModel(String model) {
+        this.model = model;
 
     }
 
-    public String getPlaca() {
-        return placa;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
-    public double getValorDia() {
-        return valorDia;
+    public double getValuePerDay() {
+        return valuePerDay;
     }
 
-    public void setValorDia(double valorDia) {
-        if (valorDia > 5000){
-        valorDia = 5000;
+    public void setValuePerDay(double valuePerDay) {
+        if (valuePerDay > 5000){
+        valuePerDay = 5000;
         }
         else{
-            this.valorDia = valorDia;
+            this.valuePerDay = valuePerDay;
         }
-    }
-
-    public void cadastrarCarro (String modelo, String placa, double valorDia, ArrayList carros){
-
-    carros.add(carros);
-
-
     }
 
 }

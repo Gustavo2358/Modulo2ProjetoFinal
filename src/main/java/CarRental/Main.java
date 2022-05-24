@@ -2,10 +2,8 @@ package CarRental;
 
 import CarRental.domain.Admin;
 import CarRental.domain.Agency;
-import CarRental.domain.Car;
 import CarRental.domain.UserType;
 import CarRental.view.AdminPage;
-import CarRental.view.CreateCar;
 import CarRental.view.EntryPage;
 import CarRental.view.ClientPage;
 
