@@ -17,4 +17,4 @@ veículos e ver os veículos cadastrados.
 3. no menu de cliente é possível visualizar os carros disponíveis
 
 ### todo:
-1. Funcionalidades de locação, alugar, devolver, etc...
+1. trabalhar nas exibições das listas (carros, clientes, carros disponíveis e etc...)
