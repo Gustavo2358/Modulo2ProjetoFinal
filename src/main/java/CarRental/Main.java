@@ -12,6 +12,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+        FakeData.addClients();
+        FakeData.addCars();
+
         UserRepository.addUser(new Admin("admin", "admin"));
         while (true) {
             if(UserRepository.getCurrentUser().getType() == UserType.GUEST) {
