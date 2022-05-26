@@ -27,6 +27,10 @@ public class Car {
         return model;
     }
 
+    public double getValuePerDay() {
+        return valuePerDay;
+    }
+
     public String getLicensePlate() {
         return licensePlate;
     }

@@ -5,6 +5,7 @@ import CarRental.domain.Client;
 import CarRental.repositories.CarRepository;
 import CarRental.repositories.UserRepository;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TransactionPage {
@@ -28,6 +29,9 @@ public class TransactionPage {
     }
 
     public static void returnCar() {
+        int days = new Random().nextInt(9);
+        days++;
+
         Scanner sc = new Scanner(System.in);
         System.out.println("### Devolver veículo ###");
         System.out.println("Digite a placa do veículo a ser devolvido:");
@@ -38,7 +42,11 @@ public class TransactionPage {
                 car.setCurrentClient(null);
                 currentClient.returnCar(car);
                 System.out.println("Devolução realizada com sucesso");
+                System.out.printf("Valor por dia R$%.2f%n", car.getValuePerDay());
+                System.out.println("Quantidade de dias: " + days);
+                System.out.printf("Valor a pagar: R$%.2f%n", car.getValuePerDay() * days);
                 System.out.println(car);
+                return;
             }
         }
         System.out.println("não foi possível realizar a devolução");
