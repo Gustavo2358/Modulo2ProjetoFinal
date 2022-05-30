@@ -14,8 +14,7 @@ public class ClientPage {
         System.out.println("3 - Alugar carro");
         System.out.println("4 - Devolver carro");
         int option = EntryPage.getEntryPageOption(1,4);
-        //TODO Alugar veículos
-        //TODO Devolver veículos
+        //TODO implementar opção "Meus veículos" que mostra os carros alugados no nome do cliente
         switch (option){
             case 1:
                 logout();
@@ -52,10 +51,11 @@ public class ClientPage {
         CarRepository
                 .getCars()
                 .forEach(car -> System.out.printf(
-                        "%s %s - placa:%s - Cliente atual:%s%n",
+                        "%s %s - placa:%s - Valor por dia: R$%.2f - Cliente atual:%s%n",
                         car.getBrand(),
                         car.getModel(),
                         car.getLicensePlate(),
+                        car.getValuePerDay(),
                         car.getCurrentClientName()
                 ));
     }
