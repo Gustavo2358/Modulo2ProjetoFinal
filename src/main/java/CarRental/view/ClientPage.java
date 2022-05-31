@@ -47,7 +47,7 @@ public class ClientPage {
 
 
     private static void showCarsAvailability() {
-
+        //TODO mostrar somente os carros disponíveis
         CarRepository
                 .getCars()
                 .forEach(car -> System.out.printf(

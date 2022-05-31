@@ -4,7 +4,6 @@ import CarRental.domain.Guest;
 import CarRental.domain.User;
 
 import java.util.HashSet;
-import java.util.stream.Collectors;
 
 public class UserRepository {
 
@@ -26,7 +25,7 @@ public class UserRepository {
     public static boolean checkPassword(String userName, String passWord){
         for(User user: users){
             if(user.getUserName().equals(userName)){
-                return user.doesPassWordMatch(passWord);
+                return user.doesPasswordMatch(passWord);
             }
         }
         return false;

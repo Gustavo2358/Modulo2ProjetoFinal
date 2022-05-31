@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public abstract class User {
     protected String userName;
-    protected String password;
+    private String password;
     protected UserType type;
 
     public User(){
@@ -25,8 +25,8 @@ public abstract class User {
     }
 
 
-    public boolean doesPassWordMatch(String passWord) {
-        return this.password.equals(passWord);
+    public boolean doesPasswordMatch(String password) {
+        return this.password.equals(password);
     }
 
     @Override

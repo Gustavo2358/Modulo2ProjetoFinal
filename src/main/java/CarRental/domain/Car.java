@@ -1,6 +1,5 @@
 package CarRental.domain;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Car {
@@ -54,8 +53,6 @@ public class Car {
             this.valuePerDay = valuePerDay;
         }
     }
-
-
 
     @Override
     public boolean equals(Object o) {
