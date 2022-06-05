@@ -5,6 +5,7 @@ import CarRental.domain.Client;
 import CarRental.repositories.CarRepository;
 import CarRental.repositories.UserRepository;
 
+import java.math.BigDecimal;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -44,7 +45,7 @@ public class TransactionPage {
                 System.out.println("Devolução realizada com sucesso");
                 System.out.printf("Valor por dia R$%.2f%n", car.getValuePerDay());
                 System.out.println("Quantidade de dias: " + days);
-                System.out.printf("Valor a pagar: R$%.2f%n", car.getValuePerDay() * days);
+                System.out.printf("Valor a pagar: R$%.2f%n", car.getValuePerDay().multiply(BigDecimal.valueOf(days)));
                 System.out.println(car);
                 return;
             }

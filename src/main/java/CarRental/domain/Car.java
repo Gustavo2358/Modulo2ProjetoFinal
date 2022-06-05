@@ -1,20 +1,25 @@
 package CarRental.domain;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Car {
     private String brand;
     private String model;
     private String licensePlate;
-    //TODO trocar double para BigDecimal
-    private double valuePerDay;
+    private BigDecimal valuePerDay;
     private Client currentClient;
 
-    public Car(String brand, String model, String licensePlate, double valuePerDay) {
+    public Car(String brand, String model, String licensePlate, BigDecimal valuePerDay) {
         this.brand = brand;
         this.model = model;
         this.licensePlate = licensePlate;
-        this.valuePerDay = valuePerDay;
+        if (valuePerDay.compareTo(BigDecimal.valueOf(5000)) >= 0){
+            this.valuePerDay = BigDecimal.valueOf(5000);
+        }
+        else{
+            this.valuePerDay = valuePerDay;
+        }
         this.currentClient = null;
     }
 
@@ -26,7 +31,7 @@ public class Car {
         return model;
     }
 
-    public double getValuePerDay() {
+    public BigDecimal getValuePerDay() {
         return valuePerDay;
     }
 
@@ -44,10 +49,9 @@ public class Car {
         this.currentClient = currentClient;
     }
 
-    //TODO setar essa limitação também no construtor
-    public void setValuePerDay(double valuePerDay) {
-        if (valuePerDay > 5000){
-        this.valuePerDay = 5000;
+    public void setValuePerDay(BigDecimal valuePerDay) {
+        if (valuePerDay.compareTo(BigDecimal.valueOf(5000)) >= 0){
+        this.valuePerDay = BigDecimal.valueOf(5000);
         }
         else{
             this.valuePerDay = valuePerDay;
