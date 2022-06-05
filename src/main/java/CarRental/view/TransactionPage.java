@@ -37,8 +37,8 @@ public class TransactionPage {
         String plate = sc.nextLine();
         for (Car car : CarRepository.getCars()) {
             if (car.getLicensePlate().equals(plate)){
-                PaymentPage.execute(car);
                 Client currentClient = (Client) UserRepository.getCurrentUser();
+                PaymentPage.execute(car, currentClient);
                 car.setCurrentClient(null);
                 currentClient.returnCar(car);
                 System.out.println("Devolução realizada com sucesso");
