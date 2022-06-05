@@ -2,6 +2,7 @@ package CarRental.factory;
 
 import CarRental.domain.Car;
 
+import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -27,6 +28,7 @@ public class CarFactory {
         do {
             try {
                 valorDia = Double.parseDouble(scanner.nextLine().replace(",","."));
+
             } catch (NumberFormatException e) {
                 System.out.println("Digite um valor real válido");
             }
@@ -34,8 +36,9 @@ public class CarFactory {
                 System.out.println("Digite um valor maior que zero");
         }while(valorDia <= 0.0);
         System.out.println("########## Veiculo cadastrado com sucesso ##########");
+        BigDecimal valorDiaBigDecimal = BigDecimal.valueOf(valorDia);
         System.out.printf("Veiculo %s %n placa %s %n cadastrado com o valor de diária de R$%.2f %n", modelo,placa,valorDia);
-        return new Car(marca,modelo,placa,valorDia);
+        return new Car(marca,modelo,placa,valorDiaBigDecimal);
 
 
     }
