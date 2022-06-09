@@ -3,6 +3,7 @@ package CarRental.view;
 import CarRental.repositories.CarRepository;
 import CarRental.repositories.UserRepository;
 import CarRental.domain.Guest;
+import CarRental.utils.Utils;
 
 public class ClientPage {
 
@@ -13,7 +14,7 @@ public class ClientPage {
         System.out.println("2 - Veículos disponíveis para locação");
         System.out.println("3 - Alugar carro");
         System.out.println("4 - Devolver carro");
-        int option = EntryPage.getEntryPageOption(1,4);
+        int option = Utils.getPageOption(1,4);
         //TODO implementar opção "Meus veículos" que mostra os carros alugados no nome do cliente
         switch (option){
             case 1:

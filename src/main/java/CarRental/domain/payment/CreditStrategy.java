@@ -1,6 +1,7 @@
 package CarRental.domain.payment;
 
 import CarRental.domain.Client;
+import CarRental.utils.Utils;
 import CarRental.view.EntryPage;
 
 import java.math.BigDecimal;
@@ -15,7 +16,7 @@ public class CreditStrategy implements PaymentStrategy {
         System.out.println("Pagamento via crédito");
         System.out.println("1 - Usar cartão salvo");
         System.out.println("2 - Salvar novo cartão");
-        switch (EntryPage.getEntryPageOption(1,2)){
+        switch (Utils.getPageOption(1,2)){
             case 1:
                 CreditCard card = selectCard(client, dueValue);
                 executePayment(card, dueValue);
@@ -36,7 +37,7 @@ public class CreditStrategy implements PaymentStrategy {
         CardType type = CardType.valueOf(sc.nextLine());
         System.out.println("Data de vencimento: ");
         System.out.println("Número do mês: ");
-        Month month = Month.of(EntryPage.getEntryPageOption(1, 12));
+        Month month = Month.of(Utils.getPageOption(1, 12));
         System.out.println("Ano: ");
         int year = Integer.parseInt(sc.nextLine());
         LocalDate expireDate = LocalDate.of(year, month, 1);
@@ -65,9 +66,8 @@ public class CreditStrategy implements PaymentStrategy {
             System.out.println(client.getCreditCards().indexOf(card)+ 1 + "- número:" + card.getCardNumber() + " nome:" + card.getCardNumber());
         }
         System.out.println("Selecione o cartão desejado: ");
-        int option = EntryPage.getEntryPageOption(1, client.getCreditCards().size());
-        CreditCard selectedCard = client.getCreditCards().get(option - 1);
-        return selectedCard;
+        int option = Utils.getPageOption(1, client.getCreditCards().size());
+        return client.getCreditCards().get(option - 1);
 
     }
 }

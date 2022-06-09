@@ -4,6 +4,7 @@ import CarRental.repositories.CarRepository;
 import CarRental.repositories.UserRepository;
 import CarRental.domain.Guest;
 import CarRental.factory.CarFactory;
+import CarRental.utils.Utils;
 
 public class AdminPage {
 
@@ -15,7 +16,7 @@ public class AdminPage {
         System.out.println("3 - Informações da frota");
         System.out.println("4 - Veículos disponíveis para locação");
         System.out.println("5 - Fazer logout");
-        int option = EntryPage.getEntryPageOption(1,5);
+        int option = Utils.getPageOption(1,5);
         switch (option){
             case 1:
                 listUsers();

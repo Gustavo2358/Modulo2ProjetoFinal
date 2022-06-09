@@ -6,6 +6,7 @@ import CarRental.domain.payment.CreditStrategy;
 import CarRental.domain.payment.InvoiceStrategy;
 import CarRental.domain.payment.Payment;
 import CarRental.domain.payment.PixStrategy;
+import CarRental.utils.Utils;
 
 import java.math.BigDecimal;
 import java.util.Random;
@@ -24,7 +25,7 @@ public class PaymentPage {
         System.out.println("1 - Crédito");
         System.out.println("2 - Boleto");
         System.out.println("3 - Pix");
-        int option = EntryPage.getEntryPageOption(1, 3);
+        int option = Utils.getPageOption(1, 3);
 
         Payment payment = new Payment(client, dueValue);
         switch (option){

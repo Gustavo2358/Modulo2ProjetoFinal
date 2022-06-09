@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class LogInPage {
 
-    public static void login(){
+    public static void execute(){
         Scanner sc = new Scanner(System.in);
         System.out.println("### FAZER LOGIN ###");
         String userName = getUserName(sc);
@@ -29,7 +29,7 @@ public class LogInPage {
         System.out.println("Nome do usuário:");
         userName = sc.nextLine();
         nameFound = UserRepository.getUserNames().contains(userName);
-        if(nameFound == false) {
+        if(!nameFound) {
             System.out.println("Nome de usuário não encontrado.");
             return  "";
         }
@@ -46,10 +46,10 @@ public class LogInPage {
                 return false;
             }
             ok = UserRepository.checkPassword(userName,passWord);
-            if(ok == false){
+            if(!ok){
                 System.out.println("senha incorreta");
             }
-        }while (ok == false);
+        }while (!ok);
         return true;
     }
 }

@@ -35,8 +35,6 @@ public class UserRepository {
         return users;
     }
 
-
-
     public static User getCurrentUser() {
         return CurrentUser;
     }

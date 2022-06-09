@@ -3,6 +3,7 @@ package CarRental.view;
 import CarRental.repositories.UserRepository;
 import CarRental.domain.Client;
 import CarRental.factory.ClientFactory;
+import CarRental.utils.Utils;
 
 import java.util.Scanner;
 
@@ -12,9 +13,9 @@ public class EntryPage {
         System.out.println("_########## BEM-VINDO A LoCar ##########_");
         System.out.println("1 - Login");
         System.out.println("2 - Criar conta");
-        switch (getEntryPageOption(1,2)){
+        switch (Utils.getPageOption(1,2)){
             case 1:
-                LogInPage.login();
+                LogInPage.execute();
                 break;
             case 2:
                 Client client = ClientFactory.createClient();
@@ -29,20 +30,4 @@ public class EntryPage {
 
     }
 
-    public static int getEntryPageOption(int minRange, int maxRange) {
-        Scanner sc = new Scanner(System.in);
-        int option = 0;
-        while(true) {
-            try {
-                option = Integer.parseInt(sc.nextLine());
-            }catch (NumberFormatException e){
-                System.out.println("Apenas valores numérico");
-            }
-            if(option >= minRange && option <= maxRange){
-                return option;
-            }else{
-                System.out.println("Opção inválida");
-            }
-        }
-    }
 }
