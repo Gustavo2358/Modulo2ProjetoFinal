@@ -1,6 +1,7 @@
 package CarRental;
 
 import CarRental.domain.Admin;
+import CarRental.factory.UserFactory;
 import CarRental.repositories.UserRepository;
 import CarRental.domain.UserType;
 import CarRental.view.AdminPage;
@@ -15,7 +16,7 @@ public class Main {
         FakeData.addClients();
         FakeData.addCars();
 
-        UserRepository.addUser(new Admin("admin", "admin"));
+        UserRepository.addUser(UserFactory.createUser("admin", "admin", UserType.ADMIN));
         while (true) {
             if(UserRepository.getCurrentUser().getType() == UserType.GUEST) {
                 EntryPage.execute();
