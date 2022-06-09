@@ -3,7 +3,6 @@ package CarRental.view;
 import CarRental.repositories.CarRepository;
 import CarRental.repositories.UserRepository;
 import CarRental.domain.Guest;
-import CarRental.factory.CarFactory;
 import CarRental.utils.Utils;
 
 public class AdminPage {
@@ -22,7 +21,7 @@ public class AdminPage {
                 listUsers();
                 break;
             case 2:
-                CarRepository.addCar(CarFactory.createCar());
+                CreateCarPage.execute();
                 break;
             case 3:
                 listCars();
