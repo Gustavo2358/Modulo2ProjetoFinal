@@ -24,8 +24,6 @@ public class Main {
             }else{
                 ClientPage.execute();
             }
-
-
         }
     }
 }
