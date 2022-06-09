@@ -28,7 +28,7 @@ public class LogInPage {
         String userName;
         System.out.println("Nome do usuário:");
         userName = sc.nextLine();
-        nameFound = UserRepository.getUserNames().contains(userName);
+        nameFound = UserRepository.getAllUserNames().contains(userName);
         if(!nameFound) {
             System.out.println("Nome de usuário não encontrado.");
             return  "";

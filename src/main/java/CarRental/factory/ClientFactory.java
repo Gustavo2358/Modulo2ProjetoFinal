@@ -2,7 +2,6 @@ package CarRental.factory;
 
 import CarRental.repositories.UserRepository;
 import CarRental.domain.Client;
-import CarRental.domain.UserType;
 
 import java.util.Scanner;
 
@@ -32,7 +31,7 @@ public class ClientFactory {
         do{
             System.out.println("Nome do usuário:");
             userName = sc.nextLine();
-            nameAlreadyInUse = UserRepository.getUserNames().contains(userName);
+            nameAlreadyInUse = UserRepository.getAllUserNames().contains(userName);
             if(nameAlreadyInUse) {
                 System.out.println("Nome de usuário em uso, por favor, escolha outro.");
             }

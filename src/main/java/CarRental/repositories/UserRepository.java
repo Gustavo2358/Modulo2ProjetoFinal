@@ -14,7 +14,7 @@ public class UserRepository {
         return users.add(user);
     }
 
-    public static HashSet<String> getUserNames(){
+    public static HashSet<String> getAllUserNames(){
         HashSet<String> names = new HashSet<>();
         for(User user : users){
             names.add(user.getUserName());
