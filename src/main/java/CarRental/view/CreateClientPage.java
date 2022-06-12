@@ -1,5 +1,6 @@
 package CarRental.view;
 
+import CarRental.ApplicationContext;
 import CarRental.domain.User;
 import CarRental.domain.UserType;
 import CarRental.factory.UserFactory;
@@ -24,7 +25,7 @@ public class CreateClientPage {
                     System.out.println("Conta Criada com sucesso");
                     System.out.println("Nome do usuário - " + client.getUserName());
                     System.out.println();
-                    UserRepository.setCurrentUser(client);
+                    ApplicationContext.setCurrentUser(client);
                     return;
                 }
             }

@@ -1,7 +1,7 @@
 package CarRental.view;
 
+import CarRental.ApplicationContext;
 import CarRental.repositories.CarRepository;
-import CarRental.repositories.UserRepository;
 import CarRental.domain.Guest;
 import CarRental.utils.Utils;
 
@@ -9,7 +9,7 @@ public class ClientPage {
 
     public static void execute(){
         System.out.println("### MENU ###");
-        System.out.printf("Nome de Usuário logado: %s%n", UserRepository.getCurrentUser().getUserName());
+        System.out.printf("Nome de Usuário logado: %s%n", ApplicationContext.getCurrentUser().getUserName());
         System.out.println("1 - Fazer logout");
         System.out.println("2 - Veículos disponíveis para locação");
         System.out.println("3 - Alugar carro");
@@ -43,7 +43,7 @@ public class ClientPage {
 
     private static void logout() {
         System.out.println("fazendo logout...");
-        UserRepository.setCurrentUser(new Guest());
+        ApplicationContext.setCurrentUser(new Guest());
     }
 
 

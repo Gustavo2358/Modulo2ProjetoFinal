@@ -17,6 +17,7 @@ public class Client extends User{
         creditCards = new ArrayList<>();
     }
 
+    //TODO mover rentCar e returnCar para service
     public void rentCar(Car car){
         if(rentedCars.add(car)){
             System.out.println(car.toString());

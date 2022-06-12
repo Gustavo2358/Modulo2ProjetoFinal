@@ -1,12 +1,10 @@
 package CarRental.view;
 
+import CarRental.ApplicationContext;
 import CarRental.domain.Car;
 import CarRental.domain.Client;
 import CarRental.repositories.CarRepository;
-import CarRental.repositories.UserRepository;
 
-import java.math.BigDecimal;
-import java.util.Random;
 import java.util.Scanner;
 
 public class TransactionPage {
@@ -19,7 +17,7 @@ public class TransactionPage {
         String plate = sc.nextLine();
         for (Car car : CarRepository.getCars()) {
             if (car.getLicensePlate().equals(plate) && car.getCurrentClientName().equals("Disponível")){
-                Client currentClient = (Client) UserRepository.getCurrentUser();
+                Client currentClient = (Client) ApplicationContext.getCurrentUser();
                 car.setCurrentClient(currentClient);
                 currentClient.rentCar(car);
                 System.out.println("Locação realizada com sucesso");
@@ -37,7 +35,7 @@ public class TransactionPage {
         String plate = sc.nextLine();
         for (Car car : CarRepository.getCars()) {
             if (car.getLicensePlate().equals(plate)){
-                Client currentClient = (Client) UserRepository.getCurrentUser();
+                Client currentClient = (Client) ApplicationContext.getCurrentUser();
                 PaymentPage.execute(car, currentClient);
                 car.setCurrentClient(null);
                 currentClient.returnCar(car);

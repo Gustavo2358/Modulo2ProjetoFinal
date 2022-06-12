@@ -1,5 +1,6 @@
 package CarRental.view;
 
+import CarRental.ApplicationContext;
 import CarRental.repositories.CarRepository;
 import CarRental.repositories.UserRepository;
 import CarRental.domain.Guest;
@@ -9,7 +10,7 @@ public class AdminPage {
 
     public static void execute(){
         System.out.println("### MENU DO ADMINISTRADOR ###");
-        System.out.printf("Nome de Usuário logado: %s%n", UserRepository.getCurrentUser().getUserName());
+        System.out.printf("Nome de Usuário logado: %s%n", ApplicationContext.getCurrentUser().getUserName());
         System.out.println("1 - Listar usuários");
         System.out.println("2 - Cadastrar Veiculo");
         System.out.println("3 - Informações da frota");
@@ -55,7 +56,7 @@ public class AdminPage {
 
     private static void logout() {
         System.out.println("fazendo logout...");
-        UserRepository.setCurrentUser(new Guest());
+        ApplicationContext.setCurrentUser(new Guest());
     }
 
     private static void listCars() {

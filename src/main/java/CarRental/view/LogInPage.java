@@ -1,5 +1,6 @@
 package CarRental.view;
 
+import CarRental.ApplicationContext;
 import CarRental.repositories.UserRepository;
 import CarRental.domain.User;
 
@@ -18,7 +19,7 @@ public class LogInPage {
         if (isPasswordValid){
             for(User user : UserRepository.getUsers()) {
                 if(user.getUserName().equals(userName))
-                UserRepository.setCurrentUser(user);
+                ApplicationContext.setCurrentUser(user);
             }
         }
     }
