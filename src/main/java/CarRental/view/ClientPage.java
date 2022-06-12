@@ -34,11 +34,11 @@ public class ClientPage {
     }
 
     private static void returnCar() {
-        TransactionPage.returnCar();
+        ReturnCarPage.execute();
     }
 
     private static void rentCar() {
-        TransactionPage.rentCar();
+        RentCarPage.execute();
     }
 
     private static void logout() {

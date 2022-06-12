@@ -4,24 +4,12 @@ import CarRental.ApplicationContext;
 import CarRental.domain.Car;
 import CarRental.domain.Client;
 import CarRental.repositories.CarRepository;
-import CarRental.service.RentCarService;
 
 import java.util.Scanner;
 
-public class TransactionPage {
-
-
-    public static void rentCar() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("### Alugar veículo ###");
-        System.out.println("Digite a placa do veículo escolhido:");
-        String plate = sc.nextLine();
-        RentCarService rentCarService = new RentCarService();
-        rentCarService.rentCar(plate);
-    }
-
+public class ReturnCarPage {
     //TODO é possível devolver o carro de outro cliente
-    public static void returnCar() {
+    public static void execute() {
         Scanner sc = new Scanner(System.in);
         System.out.println("### Devolver veículo ###");
         System.out.println("Digite a placa do veículo a ser devolvido:");
