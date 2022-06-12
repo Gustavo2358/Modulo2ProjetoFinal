@@ -4,6 +4,7 @@ import CarRental.ApplicationContext;
 import CarRental.domain.Car;
 import CarRental.domain.Client;
 import CarRental.repositories.CarRepository;
+import CarRental.service.RentCarService;
 
 import java.util.Scanner;
 
@@ -15,16 +16,8 @@ public class TransactionPage {
         System.out.println("### Alugar veículo ###");
         System.out.println("Digite a placa do veículo escolhido:");
         String plate = sc.nextLine();
-        for (Car car : CarRepository.getCars()) {
-            if (car.getLicensePlate().equals(plate) && car.getCurrentClientName().equals("Disponível")){
-                Client currentClient = (Client) ApplicationContext.getCurrentUser();
-                car.setCurrentClient(currentClient);
-                currentClient.rentCar(car);
-                System.out.println("Locação realizada com sucesso");
-                return;
-            }
-        }
-        System.out.println("Não foi possível realizar a locação");
+        RentCarService rentCarService = new RentCarService();
+        rentCarService.rentCar(plate);
     }
 
     //TODO é possível devolver o carro de outro cliente

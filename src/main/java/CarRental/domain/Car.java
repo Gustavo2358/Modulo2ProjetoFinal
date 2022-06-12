@@ -49,15 +49,6 @@ public class Car {
         this.currentClient = currentClient;
     }
 
-    public void setValuePerDay(BigDecimal valuePerDay) {
-        if (valuePerDay.compareTo(BigDecimal.valueOf(5000)) >= 0){
-        this.valuePerDay = BigDecimal.valueOf(5000);
-        }
-        else{
-            this.valuePerDay = valuePerDay;
-        }
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

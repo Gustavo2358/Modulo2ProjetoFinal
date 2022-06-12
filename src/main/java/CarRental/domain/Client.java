@@ -28,6 +28,10 @@ public class Client extends User{
         rentedCars.remove(car);
     }
 
+    public HashSet<Car> getRentedCars() {
+        return rentedCars;
+    }
+
     public ArrayList<CreditCard> getCreditCards() {
         return creditCards;
     }
