@@ -8,7 +8,7 @@ import java.util.HashSet;
 public class UserService {
 
     private static UserRepository userRepository = UserRepository.getInstance();
-    private static RepositoryService<UserRepository, User> userRepositoryService = new RepositoryService<>();
+    private static RepositoryService<User> userRepositoryService = new RepositoryService<>();
 
     public UserService(){
 

@@ -13,7 +13,7 @@ public class FakeData {
 
     public static void addClients(){
         UserRepository userRepository = UserRepository.getInstance();
-        RepositoryService<UserRepository, User> userRepositoryService = new RepositoryService<>();
+        RepositoryService<User> userRepositoryService = new RepositoryService<>();
         userRepositoryService.setRepository(userRepository);
         Client gustavo = new Client("gustavo", "1234");
         userRepositoryService.add(gustavo);
@@ -30,7 +30,7 @@ public class FakeData {
 
     public static void addCars(){
         CarRepository carRepository = CarRepository.getInstance();
-        RepositoryService<CarRepository, Car> carRepositoryService = new RepositoryService<>();
+        RepositoryService<Car> carRepositoryService = new RepositoryService<>();
         carRepositoryService.setRepository(carRepository);
         Car ferrari = new Car("Ferrari", "F-50", "abc1234", BigDecimal.valueOf(5000));
         carRepositoryService.add(ferrari);

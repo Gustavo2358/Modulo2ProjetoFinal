@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserRepositoryTest {
 
     private UserRepository userRepository = UserRepository.getInstance();
-    private RepositoryService<UserRepository, User> userRepositoryService = new RepositoryService<>();
+    private RepositoryService<User> userRepositoryService = new RepositoryService<>();
 
     @Test
     void addUsersReturnsFalseWhenNameIsEqual1() {

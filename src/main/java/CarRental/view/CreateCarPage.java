@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class CreateCarPage {
 
     private CarRepository carRepository = CarRepository.getInstance();
-    private RepositoryService<CarRepository, Car> carRepositoryService = new RepositoryService<>();
+    private RepositoryService<Car> carRepositoryService = new RepositoryService<>();
 
 
     public CreateCarPage(){

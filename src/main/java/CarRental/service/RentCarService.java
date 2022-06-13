@@ -11,7 +11,7 @@ public class RentCarService {
     public void rentCar(String plate) {
 
         CarRepository carRepository = CarRepository.getInstance();
-        RepositoryService<CarRepository, Car> carRepositoryService = new RepositoryService<>();
+        RepositoryService<Car> carRepositoryService = new RepositoryService<>();
         carRepositoryService.setRepository(carRepository);
 
         for (Car car : carRepositoryService.getAll()) {

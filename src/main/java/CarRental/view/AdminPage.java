@@ -12,10 +12,10 @@ import CarRental.utils.Utils;
 public class AdminPage {
 
     private CarRepository carRepository = CarRepository.getInstance();
-    private RepositoryService<CarRepository, Car> carRepositoryService = new RepositoryService<>();
+    private RepositoryService<Car> carRepositoryService = new RepositoryService<>();
 
     private UserRepository userRepository = UserRepository.getInstance();
-    private RepositoryService<UserRepository, User> userRepositoryService = new RepositoryService<>();
+    private RepositoryService<User> userRepositoryService = new RepositoryService<>();
 
     public AdminPage(){
         carRepositoryService.setRepository(carRepository);

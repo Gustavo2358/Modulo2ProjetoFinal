@@ -4,7 +4,7 @@ import CarRental.repositories.Repository;
 
 import java.util.Collection;
 
-public class RepositoryService<R extends Repository<E>, E> {
+public class RepositoryService<E> {
 
     private Repository<E> repository;
 

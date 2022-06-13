@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class LogInPage {
 
     private UserRepository userRepository = UserRepository.getInstance();
-    private RepositoryService<UserRepository, User> userRepositoryService = new RepositoryService<>();
+    private RepositoryService<User> userRepositoryService = new RepositoryService<>();
 
     public LogInPage(){
         userRepositoryService.setRepository(userRepository);

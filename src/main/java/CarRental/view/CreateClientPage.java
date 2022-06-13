@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class CreateClientPage {
 
     private UserRepository userRepository = UserRepository.getInstance();
-    private RepositoryService<UserRepository, User> userRepositoryService = new RepositoryService<>();
+    private RepositoryService<User> userRepositoryService = new RepositoryService<>();
 
     public CreateClientPage() {
         userRepositoryService.setRepository(userRepository);
