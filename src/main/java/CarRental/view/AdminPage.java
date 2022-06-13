@@ -38,8 +38,8 @@ public class AdminPage {
     }
 
     private static void showCarsAvailability() {
-
-        CarRepository
+        CarRepository carRepository = CarRepository.getInstance();
+        carRepository
                 .getCars()
                 .forEach(e -> System.out.printf(
                         "%s %s - placa:%s - Cliente atual:%s%n",
@@ -61,7 +61,8 @@ public class AdminPage {
     }
 
     private static void listCars() {
-        CarRepository.getCars().forEach(System.out::println);
+        CarRepository carRepository = CarRepository.getInstance();
+        carRepository.getCars().forEach(System.out::println);
     }
 
 }

@@ -34,7 +34,8 @@ public class CreateCarPage {
         System.out.println("########## Veiculo cadastrado com sucesso ##########");
         BigDecimal valorDiaBigDecimal = BigDecimal.valueOf(valorDia);
         System.out.printf("Veiculo %s %n placa %s %n cadastrado com o valor de diária de R$%.2f %n", modelo,placa,valorDia);
-        CarRepository.addCar(CarFactory.createCar(marca,modelo,placa,valorDiaBigDecimal));
+        CarRepository carRepository = CarRepository.getInstance();
+        carRepository.addCar(CarFactory.createCar(marca,modelo,placa,valorDiaBigDecimal));
 
 
     }

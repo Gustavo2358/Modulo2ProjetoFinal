@@ -25,12 +25,13 @@ public class FakeData {
     }
 
     public static void addCars(){
+        CarRepository carRepository = CarRepository.getInstance();
         Car ferrari = new Car("Ferrari", "F-50", "abc1234", BigDecimal.valueOf(5000));
-        CarRepository.addCar(ferrari);
+        carRepository.addCar(ferrari);
         Car palio = new Car("Fiat", "Palio", "abc2345", BigDecimal.valueOf(100));
-        CarRepository.addCar(palio);
+        carRepository.addCar(palio);
         Car pegeout = new Car("Pegeout", "206", "abc3456", BigDecimal.valueOf(150));
-        CarRepository.addCar(pegeout);
+        carRepository.addCar(pegeout);
 
     }
 

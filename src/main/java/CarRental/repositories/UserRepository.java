@@ -1,5 +1,4 @@
 package CarRental.repositories;
-
 import CarRental.domain.User;
 
 import java.util.HashSet;
@@ -25,5 +24,4 @@ public class UserRepository {
     public HashSet<User> getUsers() {
         return users;
     }
-
 }

@@ -41,7 +41,8 @@ public class ClientPage {
 
     private static void showCarsAvailability() {
         //TODO mostrar somente os carros disponíveis
-        CarRepository
+        CarRepository carRepository = CarRepository.getInstance();
+        carRepository
                 .getCars()
                 .forEach(car -> System.out.printf(
                         "%s %s - placa:%s - Valor por dia: R$%.2f - Cliente atual:%s%n",
