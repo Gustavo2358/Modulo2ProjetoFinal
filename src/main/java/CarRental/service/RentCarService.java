@@ -12,7 +12,7 @@ public class RentCarService {
 
         for (Car car : CarRepository.getCars()) {
             if (car.getLicensePlate().equals(plate)) {
-                if(!car.getCurrentClientName().equals("Disponível")){
+                if(!car.getCurrentClient().getUserName().equals("Disponível")){
                     System.out.println("Veículo indisponível no momento");
                     return;
                 }

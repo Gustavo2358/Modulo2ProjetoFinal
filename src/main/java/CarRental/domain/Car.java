@@ -10,6 +10,7 @@ public class Car {
     private BigDecimal valuePerDay;
     private Client currentClient;
 
+
     public Car(String brand, String model, String licensePlate, BigDecimal valuePerDay) {
         this.brand = brand;
         this.model = model;
@@ -20,8 +21,10 @@ public class Car {
         else{
             this.valuePerDay = valuePerDay;
         }
-        this.currentClient = null;
+        this.currentClient = new Client("Disponível");
     }
+
+    public Car() {}
 
     public String getBrand() {
         return brand;
@@ -39,10 +42,8 @@ public class Car {
         return licensePlate;
     }
 
-    public String getCurrentClientName() {
-        if(Objects.nonNull(currentClient))
-            return currentClient.getUserName();
-        return "Disponível";
+    public Client getCurrentClient() {
+        return currentClient;
     }
 
     public void setCurrentClient(Client currentClient) {

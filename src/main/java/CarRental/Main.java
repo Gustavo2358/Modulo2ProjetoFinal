@@ -1,5 +1,6 @@
 package CarRental;
 
+import CarRental.domain.Car;
 import CarRental.factory.UserFactory;
 import CarRental.repositories.UserRepository;
 import CarRental.domain.UserType;

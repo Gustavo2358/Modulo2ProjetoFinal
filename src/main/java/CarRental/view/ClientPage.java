@@ -10,10 +10,10 @@ public class ClientPage {
     public static void execute(){
         System.out.println("### MENU ###");
         System.out.printf("Nome de Usuário logado: %s%n", ApplicationContext.getCurrentUser().getUserName());
-        System.out.println("1 - Fazer logout");
-        System.out.println("2 - Veículos disponíveis para locação");
-        System.out.println("3 - Alugar carro");
-        System.out.println("4 - Devolver carro");
+        System.out.println("1 - Veículos disponíveis para locação");
+        System.out.println("2 - Alugar carro");
+        System.out.println("3 - Devolver carro");
+        System.out.println("4 - Fazer logout");
         int option = Utils.getPageOption(1,4);
         //TODO implementar opção "Meus veículos" que mostra os carros alugados no nome do cliente
         switch (option){
@@ -49,7 +49,7 @@ public class ClientPage {
                         car.getModel(),
                         car.getLicensePlate(),
                         car.getValuePerDay(),
-                        car.getCurrentClientName()
+                        car.getCurrentClient().getUserName()
                 ));
     }
 

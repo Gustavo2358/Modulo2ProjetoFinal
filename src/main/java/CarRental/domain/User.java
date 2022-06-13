@@ -7,8 +7,10 @@ public abstract class User {
     private String password;
     protected UserType type;
 
-    public User(){
+    public User(){}
 
+    public User(String userName){
+        this.userName = userName;
     }
 
     public User(String userName, String password) {

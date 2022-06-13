@@ -10,6 +10,13 @@ public class Client extends User{
     private final HashSet<Car> rentedCars;
     private final ArrayList<CreditCard> creditCards;
 
+    public Client(String userName){
+        super(userName);
+        super.type = UserType.CLIENT;
+        rentedCars = new HashSet<>();
+        creditCards = new ArrayList<>();
+    }
+
     public Client(String userName, String password) {
         super(userName, password);
         super.type = UserType.CLIENT;

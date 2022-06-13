@@ -13,7 +13,7 @@ public class ReturnCarService {
         for (Car car : currentClient.getRentedCars()) {
             if (car.getLicensePlate().equals(plate)){
                 PaymentPage.execute(car, currentClient);
-                car.setCurrentClient(null);
+                car.setCurrentClient(new Client("Disponível"));
                 currentClient.getRentedCars().remove(car);
                 System.out.println(car);
                 System.out.println("Devolução realizada com sucesso");

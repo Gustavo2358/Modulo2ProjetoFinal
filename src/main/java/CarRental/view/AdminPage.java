@@ -46,7 +46,7 @@ public class AdminPage {
                         e.getBrand(),
                         e.getModel(),
                         e.getLicensePlate(),
-                        e.getCurrentClientName()
+                        e.getCurrentClient().getUserName()
                 ));
     }
 
