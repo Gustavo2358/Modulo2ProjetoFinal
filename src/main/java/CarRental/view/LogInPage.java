@@ -1,8 +1,8 @@
 package CarRental.view;
 
 import CarRental.ApplicationContext;
-import CarRental.repositories.UserRepository;
 import CarRental.domain.User;
+import CarRental.repositories.GenericRepository;
 import CarRental.service.UserService;
 
 import java.util.Scanner;
@@ -18,8 +18,8 @@ public class LogInPage {
         }
         boolean isPasswordValid = getPassword(sc, userName);
         if (isPasswordValid){
-            UserRepository userRepository = UserRepository.getInstance();
-            for(User user : userRepository.getUsers()) {
+            GenericRepository<User> userRepository = GenericRepository.getInstance();
+            for(User user : userRepository.get()) {
                 if(user.getUserName().equals(userName))
                 ApplicationContext.setCurrentUser(user);
             }

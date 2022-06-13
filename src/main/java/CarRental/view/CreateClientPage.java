@@ -4,7 +4,7 @@ import CarRental.ApplicationContext;
 import CarRental.domain.User;
 import CarRental.domain.UserType;
 import CarRental.factory.UserFactory;
-import CarRental.repositories.UserRepository;
+import CarRental.repositories.GenericRepository;
 import CarRental.service.UserService;
 
 import java.util.Scanner;
@@ -22,8 +22,8 @@ public class CreateClientPage {
             String passwordConfirmation = sc.nextLine();
             if(password.equals(passwordConfirmation)){
                 User client = UserFactory.createUser(userName, password, UserType.CLIENT);
-                UserRepository userRepository = UserRepository.getInstance();
-                if(userRepository.addUser(client)){
+                GenericRepository<User> userRepository = GenericRepository.getInstance();
+                if(userRepository.add(client)){
                     System.out.println("Conta Criada com sucesso");
                     System.out.println("Nome do usuário - " + client.getUserName());
                     System.out.println();

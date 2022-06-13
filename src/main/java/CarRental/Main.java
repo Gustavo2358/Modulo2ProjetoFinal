@@ -1,8 +1,9 @@
 package CarRental;
 
+import CarRental.domain.User;
 import CarRental.factory.UserFactory;
-import CarRental.repositories.UserRepository;
 import CarRental.domain.UserType;
+import CarRental.repositories.GenericRepository;
 
 
 public class Main {
@@ -11,8 +12,8 @@ public class Main {
 
         FakeData.addClients();
         FakeData.addCars();
-        UserRepository userRepository = UserRepository.getInstance();
-        userRepository.addUser(UserFactory.createUser("admin", "admin", UserType.ADMIN));
+        GenericRepository<User> userRepository = GenericRepository.getInstance();
+        userRepository.add(UserFactory.createUser("admin", "admin", UserType.ADMIN));
 
         ApplicationContext.start();
     }

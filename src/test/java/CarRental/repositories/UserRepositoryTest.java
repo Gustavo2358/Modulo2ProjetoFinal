@@ -2,6 +2,7 @@ package CarRental.repositories;
 
 import CarRental.domain.Admin;
 import CarRental.domain.Client;
+import CarRental.domain.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,22 +11,22 @@ class UserRepositoryTest {
 
     @Test
     void addUsersReturnsFalseWhenNameIsEqual1() {
-        UserRepository userRepository = UserRepository.getInstance();
+        GenericRepository<User> userRepository = GenericRepository.getInstance();
         Admin admin1 = new Admin("admin", "admin");
-        userRepository.addUser(admin1);
+        userRepository.add(admin1);
 
         Admin admin2 = new Admin("admin", "admin");
-        assertFalse(userRepository.addUser(admin2));
+        assertFalse(userRepository.add(admin2));
 
     }
     @Test
     void addUsersReturnsFalseWhenNameIsEqual2() {
-        UserRepository userRepository = UserRepository.getInstance();
+        GenericRepository<User> userRepository = GenericRepository.getInstance();
         Client john1 = new Client("John", "1234");
-        userRepository.addUser(john1);
+        userRepository.add(john1);
 
         Client john2 = new Client("John", "4321");
-        assertFalse(userRepository.addUser(john2));
+        assertFalse(userRepository.add(john2));
 
     }
 

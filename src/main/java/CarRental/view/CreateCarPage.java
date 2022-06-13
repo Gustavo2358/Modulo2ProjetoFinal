@@ -1,7 +1,8 @@
 package CarRental.view;
 
+import CarRental.domain.Car;
 import CarRental.factory.CarFactory;
-import CarRental.repositories.CarRepository;
+import CarRental.repositories.GenericRepository;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -34,8 +35,8 @@ public class CreateCarPage {
         System.out.println("########## Veiculo cadastrado com sucesso ##########");
         BigDecimal valorDiaBigDecimal = BigDecimal.valueOf(valorDia);
         System.out.printf("Veiculo %s %n placa %s %n cadastrado com o valor de diária de R$%.2f %n", modelo,placa,valorDia);
-        CarRepository carRepository = CarRepository.getInstance();
-        carRepository.addCar(CarFactory.createCar(marca,modelo,placa,valorDiaBigDecimal));
+        GenericRepository<Car> carRepository = GenericRepository.getInstance();
+        carRepository.add(CarFactory.createCar(marca,modelo,placa,valorDiaBigDecimal));
 
 
     }

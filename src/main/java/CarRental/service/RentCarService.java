@@ -3,14 +3,14 @@ package CarRental.service;
 import CarRental.ApplicationContext;
 import CarRental.domain.Car;
 import CarRental.domain.Client;
-import CarRental.repositories.CarRepository;
+import CarRental.repositories.GenericRepository;
 
 
 public class RentCarService {
 
     public void rentCar(String plate) {
-        CarRepository carRepository = CarRepository.getInstance();
-        for (Car car : carRepository.getCars()) {
+        GenericRepository<Car> carRepository = GenericRepository.getInstance();
+        for (Car car : carRepository.get()) {
             if (car.getLicensePlate().equals(plate)) {
                 if(!car.getCurrentClient().getUserName().equals("Disponível")){
                     System.out.println("Veículo indisponível no momento");

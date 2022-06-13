@@ -1,8 +1,9 @@
 package CarRental.view;
 
 import CarRental.ApplicationContext;
-import CarRental.repositories.CarRepository;
+import CarRental.domain.Car;
 import CarRental.domain.Guest;
+import CarRental.repositories.GenericRepository;
 import CarRental.utils.Utils;
 
 public class ClientPage {
@@ -41,9 +42,9 @@ public class ClientPage {
 
     private static void showCarsAvailability() {
         //TODO mostrar somente os carros disponíveis
-        CarRepository carRepository = CarRepository.getInstance();
+        GenericRepository<Car> carRepository = GenericRepository.getInstance();
         carRepository
-                .getCars()
+                .get()
                 .forEach(car -> System.out.printf(
                         "%s %s - placa:%s - Valor por dia: R$%.2f - Cliente atual:%s%n",
                         car.getBrand(),

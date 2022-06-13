@@ -1,17 +1,16 @@
 package CarRental.service;
 
 import CarRental.domain.User;
-import CarRental.repositories.UserRepository;
+import CarRental.repositories.GenericRepository;
 
 import java.util.HashSet;
 
 public class UserService {
 
-    private static final UserRepository userRepository = UserRepository.getInstance();
-
 
     public static boolean checkPassword(String userName, String passWord){
-        for(User user: userRepository.getUsers()){
+        GenericRepository<User> userRepository = GenericRepository.getInstance();
+        for(User user: userRepository.get()){
             if(user.getUserName().equals(userName)){
                 return user.doesPasswordMatch(passWord);
             }
@@ -20,8 +19,9 @@ public class UserService {
     }
 
     public static HashSet<String> getAllUserNames(){
+        GenericRepository<User> userRepository = GenericRepository.getInstance();
         HashSet<String> names = new HashSet<>();
-        for(User user : userRepository.getUsers()){
+        for(User user : userRepository.get()){
             names.add(user.getUserName());
         }
         return names;
