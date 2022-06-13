@@ -2,14 +2,22 @@ package CarRental.view;
 
 import CarRental.ApplicationContext;
 import CarRental.domain.User;
-import CarRental.repositories.GenericRepository;
+import CarRental.service.RepositoryService;
+import CarRental.repositories.UserRepository;
 import CarRental.service.UserService;
 
 import java.util.Scanner;
 
 public class LogInPage {
 
-    public static void execute(){
+    private UserRepository userRepository = UserRepository.getInstance();
+    private RepositoryService<UserRepository, User> userRepositoryService = new RepositoryService<>();
+
+    public LogInPage(){
+        userRepositoryService.setRepository(userRepository);
+    }
+
+    public void execute(){
         Scanner sc = new Scanner(System.in);
         System.out.println("### FAZER LOGIN ###");
         String userName = getUserName(sc);
@@ -18,15 +26,14 @@ public class LogInPage {
         }
         boolean isPasswordValid = getPassword(sc, userName);
         if (isPasswordValid){
-            GenericRepository<User> userRepository = GenericRepository.getInstance();
-            for(User user : userRepository.get()) {
+            for(User user : userRepositoryService.getAll()) {
                 if(user.getUserName().equals(userName))
                 ApplicationContext.setCurrentUser(user);
             }
         }
     }
 
-    private static String getUserName(Scanner sc){
+    private String getUserName(Scanner sc){
         boolean nameFound;
         String userName;
         System.out.println("Nome do usuário:");
@@ -39,7 +46,7 @@ public class LogInPage {
         return userName;
     }
 
-    private static boolean getPassword(Scanner sc, String userName) {
+    private boolean getPassword(Scanner sc, String userName) {
         String passWord;
         boolean ok;
         do{

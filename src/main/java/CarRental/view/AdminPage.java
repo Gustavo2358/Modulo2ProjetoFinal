@@ -3,12 +3,24 @@ package CarRental.view;
 import CarRental.ApplicationContext;
 import CarRental.domain.Car;
 import CarRental.domain.User;
-import CarRental.repositories.GenericRepository;
+import CarRental.repositories.CarRepository;
+import CarRental.service.RepositoryService;
 import CarRental.domain.Guest;
+import CarRental.repositories.UserRepository;
 import CarRental.utils.Utils;
 
 public class AdminPage {
-    private GenericRepository<Car> carRepository = GenericRepository.getInstance();
+
+    private CarRepository carRepository = CarRepository.getInstance();
+    private RepositoryService<CarRepository, Car> carRepositoryService = new RepositoryService<>();
+
+    private UserRepository userRepository = UserRepository.getInstance();
+    private RepositoryService<UserRepository, User> userRepositoryService = new RepositoryService<>();
+
+    public AdminPage(){
+        carRepositoryService.setRepository(carRepository);
+        userRepositoryService.setRepository(userRepository);
+    }
 
     public void execute(){
         System.out.println("### MENU DO ADMINISTRADOR ###");
@@ -24,7 +36,8 @@ public class AdminPage {
                 listUsers();
                 break;
             case 2:
-                CreateCarPage.execute();
+                CreateCarPage createCarPage = new CreateCarPage();
+                createCarPage.execute();
                 break;
             case 3:
                 listCars();
@@ -40,8 +53,8 @@ public class AdminPage {
     }
 
     private void showCarsAvailability() {
-        this.carRepository
-                .get()
+        this.carRepositoryService
+                .getAll()
                 .forEach(e -> System.out.printf(
                         "%s %s - placa:%s - Cliente atual:%s%n",
                         e.getBrand(),
@@ -52,8 +65,7 @@ public class AdminPage {
     }
 
     private void listUsers() {
-        GenericRepository<User> userRepository = GenericRepository.getInstance();
-        userRepository.get().forEach(System.out::println);
+        userRepositoryService.getAll().forEach(System.out::println);
     }
 
     private void logout() {
@@ -62,7 +74,7 @@ public class AdminPage {
     }
 
     private void listCars() {
-        carRepository.get().forEach(System.out::println);
+        carRepositoryService.getAll().forEach(System.out::println);
     }
 
 }

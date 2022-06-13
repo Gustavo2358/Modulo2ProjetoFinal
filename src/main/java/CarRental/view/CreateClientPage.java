@@ -4,14 +4,22 @@ import CarRental.ApplicationContext;
 import CarRental.domain.User;
 import CarRental.domain.UserType;
 import CarRental.factory.UserFactory;
-import CarRental.repositories.GenericRepository;
+import CarRental.service.RepositoryService;
+import CarRental.repositories.UserRepository;
 import CarRental.service.UserService;
 
 import java.util.Scanner;
 
 public class CreateClientPage {
 
-    public static void execute() {
+    private UserRepository userRepository = UserRepository.getInstance();
+    private RepositoryService<UserRepository, User> userRepositoryService = new RepositoryService<>();
+
+    public CreateClientPage() {
+        userRepositoryService.setRepository(userRepository);
+    }
+
+    public void execute() {
         Scanner sc = new Scanner(System.in);
         System.out.println("### Criar Conta ###");
         String userName = getUserNameFromUser(sc);
@@ -22,8 +30,7 @@ public class CreateClientPage {
             String passwordConfirmation = sc.nextLine();
             if(password.equals(passwordConfirmation)){
                 User client = UserFactory.createUser(userName, password, UserType.CLIENT);
-                GenericRepository<User> userRepository = GenericRepository.getInstance();
-                if(userRepository.add(client)){
+                if(userRepositoryService.add(client)){
                     System.out.println("Conta Criada com sucesso");
                     System.out.println("Nome do usuário - " + client.getUserName());
                     System.out.println();
@@ -36,7 +43,7 @@ public class CreateClientPage {
 
     }
 
-    private static String getUserNameFromUser(Scanner sc){
+    private String getUserNameFromUser(Scanner sc){
         boolean nameAlreadyInUse;
         String userName;
         do{

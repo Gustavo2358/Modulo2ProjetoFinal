@@ -12,7 +12,8 @@ public class ReturnCarService {
         Client currentClient = (Client) ApplicationContext.getCurrentUser();
         for (Car car : currentClient.getRentedCars()) {
             if (car.getLicensePlate().equals(plate)){
-                PaymentPage.execute(car, currentClient);
+                PaymentPage paymentPage = new PaymentPage();
+                paymentPage.execute(car, currentClient);
                 car.setCurrentClient(new Client("Disponível"));
                 currentClient.getRentedCars().remove(car);
                 System.out.println(car);

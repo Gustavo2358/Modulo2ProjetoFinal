@@ -3,7 +3,8 @@ package CarRental;
 import CarRental.domain.User;
 import CarRental.factory.UserFactory;
 import CarRental.domain.UserType;
-import CarRental.repositories.GenericRepository;
+import CarRental.service.RepositoryService;
+import CarRental.repositories.UserRepository;
 
 
 public class Main {
@@ -12,8 +13,10 @@ public class Main {
 
         FakeData.addClients();
         FakeData.addCars();
-        GenericRepository<User> userRepository = GenericRepository.getInstance();
-        userRepository.add(UserFactory.createUser("admin", "admin", UserType.ADMIN));
+        UserRepository userRepository = UserRepository.getInstance();
+        RepositoryService<UserRepository, User> userRepositoryService= new RepositoryService<>();
+        userRepositoryService.setRepository(userRepository);
+        userRepositoryService.add(UserFactory.createUser("admin", "admin", UserType.ADMIN));
 
         ApplicationContext.start();
     }
