@@ -18,27 +18,19 @@ public class ClientPage {
         //TODO implementar opção "Meus veículos" que mostra os carros alugados no nome do cliente
         switch (option){
             case 1:
-                logout();
-                break;
-            case 2:
                 showCarsAvailability();
                 break;
+            case 2:
+                RentCarPage.execute();
+                break;
             case 3:
-                rentCar();
+                ReturnCarPage.execute();
                 break;
             case 4:
-                returnCar();
+                logout();
                 break;
         }
 
-    }
-
-    private static void returnCar() {
-        ReturnCarPage.execute();
-    }
-
-    private static void rentCar() {
-        RentCarPage.execute();
     }
 
     private static void logout() {

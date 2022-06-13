@@ -5,7 +5,6 @@ import CarRental.service.ReturnCarService;
 import java.util.Scanner;
 
 public class ReturnCarPage {
-    //TODO é possível devolver o carro de outro cliente
     public static void execute() {
         Scanner sc = new Scanner(System.in);
         System.out.println("### Devolver veículo ###");
