@@ -10,20 +10,22 @@ class UserRepositoryTest {
 
     @Test
     void addUsersReturnsFalseWhenNameIsEqual1() {
+        UserRepository userRepository = UserRepository.getInstance();
         Admin admin1 = new Admin("admin", "admin");
-        UserRepository.addUser(admin1);
+        userRepository.addUser(admin1);
 
         Admin admin2 = new Admin("admin", "admin");
-        assertFalse(UserRepository.addUser(admin2));
+        assertFalse(userRepository.addUser(admin2));
 
     }
     @Test
     void addUsersReturnsFalseWhenNameIsEqual2() {
+        UserRepository userRepository = UserRepository.getInstance();
         Client john1 = new Client("John", "1234");
-        UserRepository.addUser(john1);
+        userRepository.addUser(john1);
 
         Client john2 = new Client("John", "4321");
-        assertFalse(UserRepository.addUser(john2));
+        assertFalse(userRepository.addUser(john2));
 
     }
 

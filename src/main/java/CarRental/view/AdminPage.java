@@ -51,7 +51,8 @@ public class AdminPage {
     }
 
     private static void listUsers() {
-        UserRepository.getUsers().forEach(System.out::println);
+        UserRepository userRepository = UserRepository.getInstance();
+        userRepository.getUsers().forEach(System.out::println);
     }
 
     private static void logout() {
