@@ -1,9 +1,6 @@
 package CarRental.view;
 
-import CarRental.ApplicationContext;
-import CarRental.domain.Car;
-import CarRental.domain.Client;
-import CarRental.repositories.CarRepository;
+import CarRental.service.ReturnCarService;
 
 import java.util.Scanner;
 
@@ -14,17 +11,7 @@ public class ReturnCarPage {
         System.out.println("### Devolver veículo ###");
         System.out.println("Digite a placa do veículo a ser devolvido:");
         String plate = sc.nextLine();
-        for (Car car : CarRepository.getCars()) {
-            if (car.getLicensePlate().equals(plate)){
-                Client currentClient = (Client) ApplicationContext.getCurrentUser();
-                PaymentPage.execute(car, currentClient);
-                car.setCurrentClient(null);
-                currentClient.returnCar(car);
-                System.out.println("Devolução realizada com sucesso");
-                System.out.println(car);
-                return;
-            }
-        }
-        System.out.println("não foi possível realizar a devolução");
+        ReturnCarService returnCarService = new ReturnCarService();
+        returnCarService.returnCar(plate);
     }
 }

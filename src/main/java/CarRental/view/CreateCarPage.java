@@ -8,10 +8,6 @@ import java.util.Scanner;
 
 public class CreateCarPage {
 
-    private CreateCarPage(){
-
-    }
-
     public static void execute(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Cadastrando um carro ");
