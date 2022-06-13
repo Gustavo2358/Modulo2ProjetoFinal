@@ -10,26 +10,28 @@ import java.math.BigDecimal;
 public class FakeData {
 
     public static void addClients(){
+        UserRepository userRepository = UserRepository.getInstance();
         Client gustavo = new Client("gustavo", "1234");
-        UserRepository.addUser(gustavo);
+        userRepository.addUser(gustavo);
         Client felipe = new Client("felipe", "1234");
-        UserRepository.addUser(felipe);
+        userRepository.addUser(felipe);
         Client kaique = new Client("kaique", "1234");
-        UserRepository.addUser(kaique);
+        userRepository.addUser(kaique);
         Client lucas = new Client("lucas", "1234");
-        UserRepository.addUser(lucas);
+        userRepository.addUser(lucas);
         Client gabriel = new Client("gabriel", "1234");
-        UserRepository.addUser(gabriel);
+        userRepository.addUser(gabriel);
 
     }
 
     public static void addCars(){
+        CarRepository carRepository = CarRepository.getInstance();
         Car ferrari = new Car("Ferrari", "F-50", "abc1234", BigDecimal.valueOf(5000));
-        CarRepository.addCar(ferrari);
+        carRepository.addCar(ferrari);
         Car palio = new Car("Fiat", "Palio", "abc2345", BigDecimal.valueOf(100));
-        CarRepository.addCar(palio);
+        carRepository.addCar(palio);
         Car pegeout = new Car("Pegeout", "206", "abc3456", BigDecimal.valueOf(150));
-        CarRepository.addCar(pegeout);
+        carRepository.addCar(pegeout);
 
     }
 

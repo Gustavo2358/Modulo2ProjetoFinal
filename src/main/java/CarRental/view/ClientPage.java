@@ -10,35 +10,27 @@ public class ClientPage {
     public static void execute(){
         System.out.println("### MENU ###");
         System.out.printf("Nome de Usuário logado: %s%n", ApplicationContext.getCurrentUser().getUserName());
-        System.out.println("1 - Fazer logout");
-        System.out.println("2 - Veículos disponíveis para locação");
-        System.out.println("3 - Alugar carro");
-        System.out.println("4 - Devolver carro");
+        System.out.println("1 - Veículos disponíveis para locação");
+        System.out.println("2 - Alugar carro");
+        System.out.println("3 - Devolver carro");
+        System.out.println("4 - Fazer logout");
         int option = Utils.getPageOption(1,4);
         //TODO implementar opção "Meus veículos" que mostra os carros alugados no nome do cliente
         switch (option){
             case 1:
-                logout();
-                break;
-            case 2:
                 showCarsAvailability();
                 break;
+            case 2:
+                RentCarPage.execute();
+                break;
             case 3:
-                rentCar();
+                ReturnCarPage.execute();
                 break;
             case 4:
-                returnCar();
+                logout();
                 break;
         }
 
-    }
-
-    private static void returnCar() {
-        TransactionPage.returnCar();
-    }
-
-    private static void rentCar() {
-        TransactionPage.rentCar();
     }
 
     private static void logout() {
@@ -49,7 +41,8 @@ public class ClientPage {
 
     private static void showCarsAvailability() {
         //TODO mostrar somente os carros disponíveis
-        CarRepository
+        CarRepository carRepository = CarRepository.getInstance();
+        carRepository
                 .getCars()
                 .forEach(car -> System.out.printf(
                         "%s %s - placa:%s - Valor por dia: R$%.2f - Cliente atual:%s%n",
@@ -57,7 +50,7 @@ public class ClientPage {
                         car.getModel(),
                         car.getLicensePlate(),
                         car.getValuePerDay(),
-                        car.getCurrentClientName()
+                        car.getCurrentClient().getUserName()
                 ));
     }
 

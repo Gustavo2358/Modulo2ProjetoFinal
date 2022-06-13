@@ -3,6 +3,7 @@ package CarRental.view;
 import CarRental.ApplicationContext;
 import CarRental.repositories.UserRepository;
 import CarRental.domain.User;
+import CarRental.service.UserService;
 
 import java.util.Scanner;
 
@@ -17,7 +18,8 @@ public class LogInPage {
         }
         boolean isPasswordValid = getPassword(sc, userName);
         if (isPasswordValid){
-            for(User user : UserRepository.getUsers()) {
+            UserRepository userRepository = UserRepository.getInstance();
+            for(User user : userRepository.getUsers()) {
                 if(user.getUserName().equals(userName))
                 ApplicationContext.setCurrentUser(user);
             }
@@ -29,7 +31,7 @@ public class LogInPage {
         String userName;
         System.out.println("Nome do usuário:");
         userName = sc.nextLine();
-        nameFound = UserRepository.getAllUserNames().contains(userName);
+        nameFound = UserService.getAllUserNames().contains(userName);
         if(!nameFound) {
             System.out.println("Nome de usuário não encontrado.");
             return  "";
@@ -46,7 +48,7 @@ public class LogInPage {
             if(passWord.equals("sair")){
                 return false;
             }
-            ok = UserRepository.checkPassword(userName,passWord);
+            ok = UserService.checkPassword(userName,passWord);
             if(!ok){
                 System.out.println("senha incorreta");
             }

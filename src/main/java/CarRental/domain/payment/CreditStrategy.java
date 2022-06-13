@@ -63,7 +63,7 @@ public class CreditStrategy implements PaymentStrategy {
     private CreditCard selectCard(Client client, BigDecimal dueValue) {
         int index = 1;
         for(CreditCard card : client.getCreditCards() ){
-            System.out.println(client.getCreditCards().indexOf(card)+ 1 + "- número:" + card.getCardNumber() + " nome:" + card.getCardNumber());
+            System.out.println(client.getCreditCards().indexOf(card)+ 1 + "- número:" + card.getCardNumber() + " nome:" + card.getNameOnCard());
         }
         System.out.println("Selecione o cartão desejado: ");
         int option = Utils.getPageOption(1, client.getCreditCards().size());

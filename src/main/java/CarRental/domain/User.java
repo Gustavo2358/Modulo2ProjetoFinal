@@ -7,8 +7,10 @@ public abstract class User {
     private String password;
     protected UserType type;
 
-    public User(){
+    public User(){}
 
+    public User(String userName){
+        this.userName = userName;
     }
 
     public User(String userName, String password) {
@@ -24,7 +26,7 @@ public abstract class User {
         return type;
     }
 
-    //TODO mover para service
+    //TODO mover para service (como fazer)?
     public boolean doesPasswordMatch(String password) {
         return this.password.equals(password);
     }

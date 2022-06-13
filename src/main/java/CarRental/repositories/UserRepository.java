@@ -1,37 +1,27 @@
 package CarRental.repositories;
-
 import CarRental.domain.User;
 
 import java.util.HashSet;
+import java.util.Objects;
 
 public class UserRepository {
 
     private static final HashSet<User> users = new HashSet<>();
+    private static UserRepository instance = null;
 
-    public static boolean addUser(User user) {
+    private UserRepository(){}
+
+    public static UserRepository getInstance(){
+        if(Objects.isNull(instance))
+            instance = new UserRepository();
+        return instance;
+    }
+
+    public boolean addUser(User user) {
         return users.add(user);
     }
 
-    public static HashSet<String> getAllUserNames(){
-        HashSet<String> names = new HashSet<>();
-        for(User user : users){
-            names.add(user.getUserName());
-        }
-        return names;
-    }
-
-    //TODO mover checkPassword para service
-    public static boolean checkPassword(String userName, String passWord){
-        for(User user: users){
-            if(user.getUserName().equals(userName)){
-                return user.doesPasswordMatch(passWord);
-            }
-        }
-        return false;
-    }
-
-    public static HashSet<User> getUsers() {
+    public HashSet<User> getUsers() {
         return users;
     }
-
 }

@@ -38,20 +38,21 @@ public class AdminPage {
     }
 
     private static void showCarsAvailability() {
-
-        CarRepository
+        CarRepository carRepository = CarRepository.getInstance();
+        carRepository
                 .getCars()
                 .forEach(e -> System.out.printf(
                         "%s %s - placa:%s - Cliente atual:%s%n",
                         e.getBrand(),
                         e.getModel(),
                         e.getLicensePlate(),
-                        e.getCurrentClientName()
+                        e.getCurrentClient().getUserName()
                 ));
     }
 
     private static void listUsers() {
-        UserRepository.getUsers().forEach(System.out::println);
+        UserRepository userRepository = UserRepository.getInstance();
+        userRepository.getUsers().forEach(System.out::println);
     }
 
     private static void logout() {
@@ -60,7 +61,8 @@ public class AdminPage {
     }
 
     private static void listCars() {
-        CarRepository.getCars().forEach(System.out::println);
+        CarRepository carRepository = CarRepository.getInstance();
+        carRepository.getCars().forEach(System.out::println);
     }
 
 }
