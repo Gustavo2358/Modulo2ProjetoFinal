@@ -13,6 +13,7 @@ public class UserService {
     public UserService(){
 
     }
+    //TODO separar responsabilidades
 
     public static boolean checkPassword(String userName, String passWord){
         for(User user: userRepositoryService.getAll()){
