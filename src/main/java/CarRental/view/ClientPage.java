@@ -1,13 +1,23 @@
 package CarRental.view;
 
 import CarRental.ApplicationContext;
-import CarRental.repositories.CarRepository;
+import CarRental.domain.Car;
 import CarRental.domain.Guest;
+import CarRental.repositories.CarRepository;
+import CarRental.service.RepositoryService;
 import CarRental.utils.Utils;
 
 public class ClientPage {
 
-    public static void execute(){
+    private CarRepository carRepository = CarRepository.getInstance();
+    private RepositoryService<Car> carRepositoryService = new RepositoryService<>();
+
+
+    public ClientPage(){
+        carRepositoryService.setRepository(carRepository);
+    }
+
+    public void execute(){
         System.out.println("### MENU ###");
         System.out.printf("Nome de Usuário logado: %s%n", ApplicationContext.getCurrentUser().getUserName());
         System.out.println("1 - Veículos disponíveis para locação");
@@ -21,10 +31,12 @@ public class ClientPage {
                 showCarsAvailability();
                 break;
             case 2:
-                RentCarPage.execute();
+                RentCarPage rentCarPage = new RentCarPage();
+                rentCarPage.execute();
                 break;
             case 3:
-                ReturnCarPage.execute();
+                ReturnCarPage returnCarPage = new ReturnCarPage();
+                returnCarPage.execute();
                 break;
             case 4:
                 logout();
@@ -33,17 +45,16 @@ public class ClientPage {
 
     }
 
-    private static void logout() {
+    private void logout() {
         System.out.println("fazendo logout...");
         ApplicationContext.setCurrentUser(new Guest());
     }
 
 
-    private static void showCarsAvailability() {
+    private void showCarsAvailability() {
         //TODO mostrar somente os carros disponíveis
-        CarRepository carRepository = CarRepository.getInstance();
-        carRepository
-                .getCars()
+        carRepositoryService
+                .getAll()
                 .forEach(car -> System.out.printf(
                         "%s %s - placa:%s - Valor por dia: R$%.2f - Cliente atual:%s%n",
                         car.getBrand(),

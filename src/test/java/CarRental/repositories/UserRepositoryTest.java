@@ -2,30 +2,35 @@ package CarRental.repositories;
 
 import CarRental.domain.Admin;
 import CarRental.domain.Client;
+import CarRental.domain.User;
+import CarRental.service.RepositoryService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserRepositoryTest {
 
+    private UserRepository userRepository = UserRepository.getInstance();
+    private RepositoryService<User> userRepositoryService = new RepositoryService<>();
+
     @Test
     void addUsersReturnsFalseWhenNameIsEqual1() {
-        UserRepository userRepository = UserRepository.getInstance();
+        userRepositoryService.setRepository(userRepository);
         Admin admin1 = new Admin("admin", "admin");
-        userRepository.addUser(admin1);
+        userRepositoryService.add(admin1);
 
         Admin admin2 = new Admin("admin", "admin");
-        assertFalse(userRepository.addUser(admin2));
+        assertFalse(userRepositoryService.add(admin2));
 
     }
     @Test
     void addUsersReturnsFalseWhenNameIsEqual2() {
-        UserRepository userRepository = UserRepository.getInstance();
+        userRepositoryService.setRepository(userRepository);
         Client john1 = new Client("John", "1234");
-        userRepository.addUser(john1);
+        userRepositoryService.add(john1);
 
         Client john2 = new Client("John", "4321");
-        assertFalse(userRepository.addUser(john2));
+        assertFalse(userRepositoryService.add(john2));
 
     }
 

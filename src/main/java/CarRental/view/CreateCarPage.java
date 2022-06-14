@@ -1,14 +1,24 @@
 package CarRental.view;
 
+import CarRental.domain.Car;
 import CarRental.factory.CarFactory;
 import CarRental.repositories.CarRepository;
+import CarRental.service.RepositoryService;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class CreateCarPage {
 
-    public static void execute(){
+    private CarRepository carRepository = CarRepository.getInstance();
+    private RepositoryService<Car> carRepositoryService = new RepositoryService<>();
+
+
+    public CreateCarPage(){
+        carRepositoryService.setRepository(carRepository);
+    }
+
+    public void execute(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Cadastrando um carro ");
         System.out.println("Informe a marca ");
@@ -34,8 +44,7 @@ public class CreateCarPage {
         System.out.println("########## Veiculo cadastrado com sucesso ##########");
         BigDecimal valorDiaBigDecimal = BigDecimal.valueOf(valorDia);
         System.out.printf("Veiculo %s %n placa %s %n cadastrado com o valor de diária de R$%.2f %n", modelo,placa,valorDia);
-        CarRepository carRepository = CarRepository.getInstance();
-        carRepository.addCar(CarFactory.createCar(marca,modelo,placa,valorDiaBigDecimal));
+        carRepositoryService.add(CarFactory.createCar(marca,modelo,placa,valorDiaBigDecimal));
 
 
     }

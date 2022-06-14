@@ -7,11 +7,16 @@ import java.util.HashSet;
 
 public class UserService {
 
-    private static final UserRepository userRepository = UserRepository.getInstance();
+    private static UserRepository userRepository = UserRepository.getInstance();
+    private static RepositoryService<User> userRepositoryService = new RepositoryService<>();
 
+    public UserService(){
+
+    }
+    //TODO separar responsabilidades
 
     public static boolean checkPassword(String userName, String passWord){
-        for(User user: userRepository.getUsers()){
+        for(User user: userRepositoryService.getAll()){
             if(user.getUserName().equals(userName)){
                 return user.doesPasswordMatch(passWord);
             }
@@ -21,7 +26,8 @@ public class UserService {
 
     public static HashSet<String> getAllUserNames(){
         HashSet<String> names = new HashSet<>();
-        for(User user : userRepository.getUsers()){
+        userRepositoryService.setRepository(userRepository);
+        for(User user : userRepositoryService.getAll()){
             names.add(user.getUserName());
         }
         return names;

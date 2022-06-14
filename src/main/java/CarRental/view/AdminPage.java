@@ -1,14 +1,28 @@
 package CarRental.view;
 
 import CarRental.ApplicationContext;
+import CarRental.domain.Car;
+import CarRental.domain.User;
 import CarRental.repositories.CarRepository;
-import CarRental.repositories.UserRepository;
+import CarRental.service.RepositoryService;
 import CarRental.domain.Guest;
+import CarRental.repositories.UserRepository;
 import CarRental.utils.Utils;
 
 public class AdminPage {
 
-    public static void execute(){
+    private CarRepository carRepository = CarRepository.getInstance();
+    private RepositoryService<Car> carRepositoryService = new RepositoryService<>();
+
+    private UserRepository userRepository = UserRepository.getInstance();
+    private RepositoryService<User> userRepositoryService = new RepositoryService<>();
+
+    public AdminPage(){
+        carRepositoryService.setRepository(carRepository);
+        userRepositoryService.setRepository(userRepository);
+    }
+
+    public void execute(){
         System.out.println("### MENU DO ADMINISTRADOR ###");
         System.out.printf("Nome de Usuário logado: %s%n", ApplicationContext.getCurrentUser().getUserName());
         System.out.println("1 - Listar usuários");
@@ -22,7 +36,8 @@ public class AdminPage {
                 listUsers();
                 break;
             case 2:
-                CreateCarPage.execute();
+                CreateCarPage createCarPage = new CreateCarPage();
+                createCarPage.execute();
                 break;
             case 3:
                 listCars();
@@ -37,10 +52,9 @@ public class AdminPage {
 
     }
 
-    private static void showCarsAvailability() {
-        CarRepository carRepository = CarRepository.getInstance();
-        carRepository
-                .getCars()
+    private void showCarsAvailability() {
+        this.carRepositoryService
+                .getAll()
                 .forEach(e -> System.out.printf(
                         "%s %s - placa:%s - Cliente atual:%s%n",
                         e.getBrand(),
@@ -50,19 +64,17 @@ public class AdminPage {
                 ));
     }
 
-    private static void listUsers() {
-        UserRepository userRepository = UserRepository.getInstance();
-        userRepository.getUsers().forEach(System.out::println);
+    private void listUsers() {
+        userRepositoryService.getAll().forEach(System.out::println);
     }
 
-    private static void logout() {
+    private void logout() {
         System.out.println("fazendo logout...");
         ApplicationContext.setCurrentUser(new Guest());
     }
 
-    private static void listCars() {
-        CarRepository carRepository = CarRepository.getInstance();
-        carRepository.getCars().forEach(System.out::println);
+    private void listCars() {
+        carRepositoryService.getAll().forEach(System.out::println);
     }
 
 }

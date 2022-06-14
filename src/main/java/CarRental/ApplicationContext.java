@@ -1,5 +1,6 @@
 package CarRental;
 
+import CarRental.domain.Admin;
 import CarRental.domain.Guest;
 import CarRental.domain.User;
 import CarRental.domain.UserType;
@@ -14,11 +15,14 @@ public class ApplicationContext {
     public static void start(){
         while (true) {
             if(getCurrentUser().getType() == UserType.GUEST) {
-                EntryPage.execute();
+                EntryPage entryPage = new EntryPage();
+                entryPage.execute();
             }else if(getCurrentUser().getType() == UserType.ADMIN){
-                AdminPage.execute();
+                AdminPage adminPage = new AdminPage();
+                adminPage.execute();
             }else{
-                ClientPage.execute();
+                ClientPage clientPage = new ClientPage();
+                clientPage.execute();
             }
         }
     }

@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Random;
 
 public class PaymentPage {
-    public static void execute(Car car, Client client) {
+    public void execute(Car car, Client client) {
 
         //generate random number of days beetween 1 and 10
         int days = new Random().nextInt(9) + 1;

@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class RentCarPage {
 
 
-    public static void execute() {
+    public void execute() {
         Scanner sc = new Scanner(System.in);
         System.out.println("### Alugar veículo ###");
         System.out.println("Digite a placa do veículo escolhido:");

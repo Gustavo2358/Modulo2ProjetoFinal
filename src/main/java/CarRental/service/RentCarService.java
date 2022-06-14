@@ -9,8 +9,12 @@ import CarRental.repositories.CarRepository;
 public class RentCarService {
 
     public void rentCar(String plate) {
+
         CarRepository carRepository = CarRepository.getInstance();
-        for (Car car : carRepository.getCars()) {
+        RepositoryService<Car> carRepositoryService = new RepositoryService<>();
+        carRepositoryService.setRepository(carRepository);
+
+        for (Car car : carRepositoryService.getAll()) {
             if (car.getLicensePlate().equals(plate)) {
                 if(!car.getCurrentClient().getUserName().equals("Disponível")){
                     System.out.println("Veículo indisponível no momento");

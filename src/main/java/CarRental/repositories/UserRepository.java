@@ -1,11 +1,12 @@
 package CarRental.repositories;
+
 import CarRental.domain.User;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 
-public class UserRepository {
-
+public class UserRepository implements Repository<User>{
     private static final HashSet<User> users = new HashSet<>();
     private static UserRepository instance = null;
 
@@ -17,11 +18,8 @@ public class UserRepository {
         return instance;
     }
 
-    public boolean addUser(User user) {
-        return users.add(user);
-    }
-
-    public HashSet<User> getUsers() {
+    @Override
+    public Collection<User> getElements() {
         return users;
     }
 }
