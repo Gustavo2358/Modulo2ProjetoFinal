@@ -19,7 +19,12 @@ public class UserRepository implements Repository<User>{
     }
 
     @Override
-    public Collection<User> getElements() {
+    public Collection<User> getAll() {
         return users;
+    }
+
+    @Override
+    public boolean add(User user) {
+        return users.add(user);
     }
 }

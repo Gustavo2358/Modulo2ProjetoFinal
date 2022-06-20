@@ -19,8 +19,13 @@ public class CarRepository implements Repository<Car>{
     }
 
     @Override
-    public Collection<Car> getElements() {
+    public Collection<Car> getAll() {
         return cars;
+    }
+
+    @Override
+    public boolean add(Car car) {
+        return cars.add(car);
     }
 }
 

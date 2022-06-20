@@ -13,10 +13,10 @@ public class RepositoryService<E> {
     }
 
     public boolean add(E element) {
-        return this.repository.getElements().add(element);
+        return this.repository.add(element);
     }
 
     public Collection<E> getAll() {
-        return this.repository.getElements();
+        return this.repository.getAll();
     }
 }
