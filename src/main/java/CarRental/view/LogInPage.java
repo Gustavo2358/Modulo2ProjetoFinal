@@ -3,18 +3,16 @@ package CarRental.view;
 import CarRental.ApplicationContext;
 import CarRental.domain.User;
 import CarRental.service.RepositoryService;
-import CarRental.repositories.UserRepository;
 import CarRental.service.UserService;
 
 import java.util.Scanner;
 
 public class LogInPage {
 
-    private UserRepository userRepository = UserRepository.getInstance();
     private RepositoryService<User> userRepositoryService = new RepositoryService<>();
 
     public LogInPage(){
-        userRepositoryService.setRepository(userRepository);
+        userRepositoryService.setRepository(ApplicationContext.getUserRepository());
     }
 
     public void execute(){
@@ -38,7 +36,8 @@ public class LogInPage {
         String userName;
         System.out.println("Nome do usuário:");
         userName = sc.nextLine();
-        nameFound = UserService.getAllUserNames().contains(userName);
+        UserService userService = new UserService();
+        nameFound = userService.getAllUserNames().contains(userName);
         if(!nameFound) {
             System.out.println("Nome de usuário não encontrado.");
             return  "";
@@ -55,7 +54,8 @@ public class LogInPage {
             if(passWord.equals("sair")){
                 return false;
             }
-            ok = UserService.checkPassword(userName,passWord);
+            UserService userService = new UserService();
+            ok = userService.checkPassword(userName,passWord);
             if(!ok){
                 System.out.println("senha incorreta");
             }

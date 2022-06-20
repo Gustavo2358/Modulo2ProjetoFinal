@@ -5,18 +5,16 @@ import CarRental.domain.User;
 import CarRental.domain.UserType;
 import CarRental.factory.UserFactory;
 import CarRental.service.RepositoryService;
-import CarRental.repositories.UserRepository;
 import CarRental.service.UserService;
 
 import java.util.Scanner;
 
 public class CreateClientPage {
 
-    private UserRepository userRepository = UserRepository.getInstance();
     private RepositoryService<User> userRepositoryService = new RepositoryService<>();
 
     public CreateClientPage() {
-        userRepositoryService.setRepository(userRepository);
+        userRepositoryService.setRepository(ApplicationContext.getUserRepository());
     }
 
     public void execute() {
@@ -49,7 +47,8 @@ public class CreateClientPage {
         do{
             System.out.println("Nome do usuário:");
             userName = sc.nextLine();
-            nameAlreadyInUse = UserService.getAllUserNames().contains(userName);
+            UserService userService = new UserService();
+            nameAlreadyInUse = userService.getAllUserNames().contains(userName);
             if(nameAlreadyInUse) {
                 System.out.println("Nome de usuário em uso, por favor, escolha outro.");
             }

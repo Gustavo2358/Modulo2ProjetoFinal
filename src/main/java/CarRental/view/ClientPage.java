@@ -3,18 +3,16 @@ package CarRental.view;
 import CarRental.ApplicationContext;
 import CarRental.domain.Car;
 import CarRental.domain.Guest;
-import CarRental.repositories.CarRepository;
 import CarRental.service.RepositoryService;
 import CarRental.utils.Utils;
 
 public class ClientPage {
 
-    private CarRepository carRepository = CarRepository.getInstance();
     private RepositoryService<Car> carRepositoryService = new RepositoryService<>();
 
 
     public ClientPage(){
-        carRepositoryService.setRepository(carRepository);
+        carRepositoryService.setRepository(ApplicationContext.getCarRepository());
     }
 
     public void execute(){

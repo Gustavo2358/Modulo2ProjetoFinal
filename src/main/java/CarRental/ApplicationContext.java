@@ -1,16 +1,21 @@
 package CarRental;
 
-import CarRental.domain.Admin;
+import CarRental.domain.Car;
 import CarRental.domain.Guest;
 import CarRental.domain.User;
 import CarRental.domain.UserType;
+import CarRental.repositories.CarRepository;
+import CarRental.repositories.Repository;
+import CarRental.repositories.UserRepository;
 import CarRental.view.AdminPage;
 import CarRental.view.ClientPage;
 import CarRental.view.EntryPage;
 
 public class ApplicationContext {
 
-    public static User CurrentUser = new Guest();
+    private static User CurrentUser = new Guest();
+    private static Repository<User> userRepository = UserRepository.getInstance();
+    private static Repository<Car> carRepository = CarRepository.getInstance();
 
     public static void start(){
         while (true) {
@@ -33,5 +38,13 @@ public class ApplicationContext {
 
     public static void setCurrentUser(User currentUser) {
         CurrentUser = currentUser;
+    }
+
+    public static Repository<User> getUserRepository() {
+        return userRepository;
+    }
+
+    public static Repository<Car> getCarRepository() {
+        return carRepository;
     }
 }

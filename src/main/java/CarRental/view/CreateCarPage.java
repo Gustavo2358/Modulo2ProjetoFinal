@@ -1,5 +1,6 @@
 package CarRental.view;
 
+import CarRental.ApplicationContext;
 import CarRental.domain.Car;
 import CarRental.factory.CarFactory;
 import CarRental.repositories.CarRepository;
@@ -10,12 +11,11 @@ import java.util.Scanner;
 
 public class CreateCarPage {
 
-    private CarRepository carRepository = CarRepository.getInstance();
     private RepositoryService<Car> carRepositoryService = new RepositoryService<>();
 
 
     public CreateCarPage(){
-        carRepositoryService.setRepository(carRepository);
+        carRepositoryService.setRepository(ApplicationContext.getCarRepository());
     }
 
     public void execute(){

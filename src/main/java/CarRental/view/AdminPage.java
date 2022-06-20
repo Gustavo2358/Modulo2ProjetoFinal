@@ -3,23 +3,18 @@ package CarRental.view;
 import CarRental.ApplicationContext;
 import CarRental.domain.Car;
 import CarRental.domain.User;
-import CarRental.repositories.CarRepository;
 import CarRental.service.RepositoryService;
 import CarRental.domain.Guest;
-import CarRental.repositories.UserRepository;
 import CarRental.utils.Utils;
 
 public class AdminPage {
 
-    private CarRepository carRepository = CarRepository.getInstance();
     private RepositoryService<Car> carRepositoryService = new RepositoryService<>();
-
-    private UserRepository userRepository = UserRepository.getInstance();
     private RepositoryService<User> userRepositoryService = new RepositoryService<>();
 
     public AdminPage(){
-        carRepositoryService.setRepository(carRepository);
-        userRepositoryService.setRepository(userRepository);
+        carRepositoryService.setRepository(ApplicationContext.getCarRepository());
+        userRepositoryService.setRepository(ApplicationContext.getUserRepository());
     }
 
     public void execute(){
