@@ -4,9 +4,7 @@ import CarRental.domain.Car;
 import CarRental.domain.Guest;
 import CarRental.domain.User;
 import CarRental.domain.UserType;
-import CarRental.repositories.CarRepository;
-import CarRental.repositories.Repository;
-import CarRental.repositories.UserRepository;
+import CarRental.repositories.*;
 import CarRental.view.AdminPage;
 import CarRental.view.ClientPage;
 import CarRental.view.EntryPage;
@@ -14,7 +12,7 @@ import CarRental.view.EntryPage;
 public class ApplicationContext {
 
     private static User CurrentUser = new Guest();
-    private static Repository<User> userRepository = UserRepository.getInstance();
+    private static Repository<User> userRepository = new UserFileRepository();
     private static Repository<Car> carRepository = CarRepository.getInstance();
 
     public static void start(){

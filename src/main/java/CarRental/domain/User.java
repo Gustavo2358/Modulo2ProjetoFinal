@@ -1,8 +1,19 @@
 package CarRental.domain;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.util.Objects;
 
-public abstract class User {
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Admin.class, name = "ADMIN"),
+        @JsonSubTypes.Type(value = Client.class, name = "CLIENT")
+})
+public abstract class User implements Comparable<User>{
     protected String userName;
     private String password;
     protected UserType type;
@@ -22,8 +33,24 @@ public abstract class User {
         return userName;
     }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public UserType getType() {
         return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean doesPasswordMatch(String password) {
@@ -50,5 +77,10 @@ public abstract class User {
     @Override
     public int hashCode() {
         return Objects.hash(userName);
+    }
+
+    @Override
+    public int compareTo(User user) {
+        return userName.compareTo(user.userName);
     }
 }

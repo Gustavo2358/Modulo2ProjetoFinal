@@ -1,0 +1,1 @@
+[{"userName":"admin","password":"admin","type":"ADMIN"},{"userName":"gabriel","password":"1234","type":"CLIENT","rentedCars":[],"creditCards":[]},{"userName":"gustavo","password":"1234","type":"CLIENT","rentedCars":[],"creditCards":[]},{"userName":"kaique","password":"1234","type":"CLIENT","rentedCars":[],"creditCards":[]}]

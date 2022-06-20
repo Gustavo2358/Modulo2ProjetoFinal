@@ -13,9 +13,9 @@ public class Main {
 
         FakeData.addClients();
         FakeData.addCars();
-        UserRepository userRepository = UserRepository.getInstance();
+//        UserRepository userRepository = UserRepository.getInstance();
         RepositoryService<User> userRepositoryService = new RepositoryService<>();
-        userRepositoryService.setRepository(userRepository);
+        userRepositoryService.setRepository(ApplicationContext.getUserRepository());
         userRepositoryService.add(UserFactory.createUser("admin", "admin", UserType.ADMIN));
 
         ApplicationContext.start();

@@ -3,7 +3,6 @@ package CarRental.view;
 import CarRental.ApplicationContext;
 import CarRental.domain.Car;
 import CarRental.factory.CarFactory;
-import CarRental.repositories.CarRepository;
 import CarRental.service.RepositoryService;
 
 import java.math.BigDecimal;

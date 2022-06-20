@@ -7,8 +7,14 @@ import java.util.HashSet;
 
 public class Client extends User{
 
-    private final HashSet<Car> rentedCars;
-    private final ArrayList<CreditCard> creditCards;
+    private HashSet<Car> rentedCars = null;
+    private ArrayList<CreditCard> creditCards = null;
+
+    public Client(){
+        super.type = UserType.CLIENT;
+        rentedCars = new HashSet<>();
+        creditCards = new ArrayList<>();
+    }
 
     public Client(String userName){
         super(userName);
@@ -28,8 +34,16 @@ public class Client extends User{
         return rentedCars;
     }
 
+    public void setRentedCars(HashSet<Car> rentedCars) {
+        this.rentedCars = rentedCars;
+    }
+
     public ArrayList<CreditCard> getCreditCards() {
         return creditCards;
+    }
+
+    public void setCreditCards(ArrayList<CreditCard> creditCards) {
+        this.creditCards = creditCards;
     }
 
     public boolean addCreditCard(CreditCard creditCard){
